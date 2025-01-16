@@ -1,0 +1,4 @@
+# Install project dependencies before run
+dependency_command: bundle install && yarn install
+# Command to run development server
+run_command: bin/dev
