@@ -1,6 +1,11 @@
 .my-navbar {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  background-color: #000000;
+
+  &.bg-dark {
+    background-color: #000000 !important;
+  }
 
   a.navbar-brand:hover {
     color: #aaa;
