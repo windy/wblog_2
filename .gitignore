@@ -9,7 +9,6 @@
 !.1024
 .breakpoints
 
-# Ignore bundler config.
 /.bundle
 
 # Ignore the default SQLite database.
@@ -26,7 +25,9 @@
 /storage/*
 !/storage/.keep
 
+# Ignore public assets and packs
 /public/assets
+/public/packs
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -44,10 +45,11 @@ yarn-debug.log*
 /public/assets/*
 /tags
 
+# Ignore sensitive configuration files
 /config/application.yml
-/config/mongoid.yml
 /config/database.yml
 /config/master.key
+.env
 **.orig
 *.old
 *.bak
