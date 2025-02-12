@@ -41,6 +41,6 @@ html
               a class="nav-link" href=archives_path
                 .fa.fa-search
       main
-        = render 'common/welcome_new_year'
+        = safe_render 'common/welcome_new_year'
         = yield
-        = render "layouts/footer"
+        = safe_render 'layouts/footer'
