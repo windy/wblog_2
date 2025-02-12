@@ -9,41 +9,49 @@
 !.1024
 .breakpoints
 
+# Dependencies
 /.bundle
+/vendor/bundle
+/node_modules
+.yarn-integrity
+yarn-debug.log*
+yarn-error.log*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
-# Ignore all logfiles and tempfiles.
+# Ignore all Rails temporary files 
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.swp
+*.old
+*.bak
+*~
+.byebug_history
+.DS_Store
 
-# Ignore uploaded files in development.
+# Ignore uploaded files and storage
 /storage/*
 !/storage/.keep
+/public/uploads/*
 
-# Ignore public assets and packs
-/public/assets
-/public/packs
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
+# Ignore asset pipeline and webpacker outputs
+/public/assets/*
 /public/packs
 /public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
+/app/assets/builds/*
+!/app/assets/builds/.keep
 
-*.swp
-
-/public/uploads/*
-/public/assets/*
+# Ignore sensitive configuration files  
+/config/master.key
+/config/application.yml
+/config/database.yml
+.env
 /tags
+**.orig
 
 # Ignore sensitive configuration files
 /config/application.yml
