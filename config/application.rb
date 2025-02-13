@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Wblog
   class Application < Rails::Application
+    config.before_configuration do
+      yaml_path = Rails.root.join('config', 'words.yml')
+      Rails.configuration.sensitive_words = YAML.load_file(yaml_path)
+    end
 
     config.generators do |g|
       g.test_framework :rspec,
