@@ -1,0 +1,31 @@
+- content_for(:title) do
+  | #{t('title.changelog')}
+
+.container
+  .row.justify-content-center
+    .col-sm-12.col-lg-9
+      .changelog-header
+        h1.page-title= t('title.changelog')
+        p.lead= t('changelog.description')
+
+      .changelog-content
+        .content-wrapper
+          article.markdown-content
+            = raw @rendered_content
+
+        section.version  
+          h2 v1.0.0 (2016-04-20)
+          ul.changes
+            li.addition
+              span.change-type= t('changelog.added')
+              | 博客基础功能
+            li.addition
+              span.change-type= t('changelog.added')
+              | 评论功能
+            li.addition
+              span.change-type= t('changelog.added')
+              | 后台管理
+
+      .changelog-footer
+        p= t('changelog.footer')
+        = link_to t('changelog.back'), root_path, class: 'btn btn-primary'

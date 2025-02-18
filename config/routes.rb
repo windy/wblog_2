@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :archives, only: [:index]
   resources :photos, only: [:create]
+  resources :changes, only: [:index]
 
   get '/about', to: 'home#about'
 

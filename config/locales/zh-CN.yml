@@ -37,12 +37,14 @@ zh-CN:
     life: '生活'
     creator: '创业'
     timeline: '时间线'
+    changelog: '更新日志'
     about: '关于我'
 
   title:
     home: '首页'
     timeline: '时间线'
     about: '关于我'
+    changelog: '更新日志'
 
 
   activerecord:

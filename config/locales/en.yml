@@ -37,11 +37,13 @@ en:
     life: 'Life'
     creator: 'Startup'
     timeline: 'Timeline'
+    changelog: 'Changelog'
     about: 'About'
 
   title:
     home: 'Home'
     timeline: 'Timeline'
+    changelog: 'Changelog'
     about: 'About Me'
 
   comment_attributes:

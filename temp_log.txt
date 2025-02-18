@@ -1,0 +1,575 @@
+2025-02-13 - Merge pull request #10 from windy/chore/init-clacky-env
+2025-02-13 - Add development config for host permissions and ignore Clacky files
+2025-02-13 - core: upgrade rails7.0 -> rails7.1
+2025-01-24 - update nokogiri & carriewaver version
+2025-01-22 - update bundler lock version to fix DidYouMean::SPELL_CHECKERS.merge warning
+2025-01-21 - core: open turbo
+2025-01-20 - update readme
+2025-01-20 - Merge pull request #135 from windy/propshaft_migrate
+2025-01-20 - upgrade to rails7.0
+2025-01-20 - fix
+2025-01-20 - fix: try fix fonts error
+2025-01-20 - ai fix
+2025-01-15 - update new readme
+2025-01-15 - Merge pull request #134 from windy/rails-bundling-css-js
+2025-01-15 - core: fix bugs
+2025-01-14 - core: make css build no warning
+2025-01-14 - core: remove webpacker; using jsbundling & cssbundling
+2025-01-10 - core: upgrade ruby to 3.1.2; upgrade adminlte to 4.0.0-beta3
+2024-05-08 - close comment
+2021-10-13 - update page path
+2021-09-17 - move about path
+2021-09-06 - fix new post bug
+2021-07-03 - downgrade puma
+2021-07-03 - make db compatibility with old wblog
+2021-07-03 - fix
+2021-07-03 - Merge pull request #79 from windy/dependabot/bundler/simple_form-5.0.0
+2021-07-03 - rm npm file
+2021-07-01 - update README
+2021-07-01 - Bump simple_form from 4.1.0 to 5.0.0
+2021-07-01 - Merge branch 'master-holder'
+2021-07-01 - delete all the things
+2021-06-29 - add animate to about page
+2021-06-29 - refactor comment
+2021-06-19 - refactor comment with turbo-frame
+2021-06-17 - use stimulus refactor like and qrcode
+2021-06-17 - add turbo, refactor code
+2021-06-16 - refactor with dao42/rails-template
+2021-06-14 - init rails with dao42/rails-template
+2020-08-20 - udpate footer
+2020-06-25 - update
+2020-06-25 - update
+2020-03-07 - fix
+2020-02-21 - update home index
+2019-12-06 - Merge pull request #62 from windy/dependabot/bundler/puma-3.12.2
+2019-12-05 - Bump puma from 3.12.1 to 3.12.2
+2019-11-16 - Merge pull request #61 from windy/dependabot/bundler/rack-cors-1.0.5
+2019-11-15 - Bump rack-cors from 1.0.3 to 1.0.5
+2019-11-14 - update deploy file
+2019-11-07 - Merge pull request #59 from windy/dependabot/bundler/mini_magick-4.9.4
+2019-11-07 - Merge pull request #60 from windy/dependabot/bundler/nokogiri-1.10.4
+2019-11-07 - Bump nokogiri from 1.10.2 to 1.10.4
+2019-11-07 - Bump mini_magick from 4.9.3 to 4.9.4
+2019-11-07 - Merge pull request #58 from windy/dependabot/bundler/loofah-2.3.1
+2019-11-06 - Bump loofah from 2.2.3 to 2.3.1
+2019-05-24 - add beian
+2019-05-23 - update deploy info
+2019-05-11 - update mina ng puma
+2019-05-11 - update about page
+2019-04-23 - update about page
+2019-04-23 - update puma
+2019-04-23 - update about page
+2019-04-23 - fix travis ci
+2019-04-22 - fix error
+2019-04-22 - update gemfile
+2018-12-21 - update home index
+2018-12-18 - update gemfile versions
+2018-09-30 - Update gemfile
+2018-07-06 - update gems
+2018-05-26 - add blog search feature
+2018-05-19 - add simplecov
+2018-05-19 - update readme
+2018-05-19 - trying fix travis ci
+2018-05-19 - refactor js
+2018-05-19 - fix depreciation message
+2018-05-19 - upgrade from 5.1 to 5.2
+2018-03-23 - fix xss
+2018-01-29 - update text
+2018-01-28 - add wechat_qrcode
+2018-01-21 - add en deploy file
+2018-01-21 - upgrade gems
+2018-01-21 - update profile
+2018-01-21 - update deploy info
+2017-07-20 - fix upload 500 error
+2017-05-23 - drop unicorn and use puma
+2017-05-13 - fix deploy file
+2017-05-01 - update mina version
+2017-04-30 - Merge branch 'rails51'
+2017-04-30 - upgrade to rails5.1
+2016-11-08 - Remove useless route
+2016-11-07 - Modify about home page
+2016-11-07 - Remove useless route
+2016-08-13 - Ignore exception with null session
+2016-08-12 - Reject request with csrf attack
+2016-08-12 - Trying to fix comment attack
+2016-08-07 - Add defer instead of async
+2016-08-07 - Trying to fix loading js async bug
+2016-08-07 - Speed up js load time
+2016-08-07 - Fixed rspec warning info, refactor spec
+2016-08-06 - Update ruby version
+2016-08-06 - Add cdn
+2016-07-29 - warning -> warn
+2016-07-29 - Add browser_warrior
+2016-07-29 - Update ruby version to 2.3.1
+2016-07-29 - Merge pull request #49 from jimmy0017/dev
+2016-07-28 - Put footer's website and year into application.yml
+2016-07-28 - Change travis.yml to ruby 2.3.1
+2016-07-28 - Change footer's design by to www url
+2016-07-28 - Update to rails 5
+2016-06-23 - remove quiet assets because rails5 has support it
+2016-05-15 - Update rails version, add mina logs
+2016-05-13 - Modify jiaoluo url
+2016-05-03 - locales yml update
+2016-05-03 - fixing admin posts bug
+2016-04-29 - Img tag css
+2016-04-29 - Fixing comment attack by bot
+2016-04-28 - Update README
+2016-04-28 - Add screenshots link
+2016-04-28 - Update README & Add wblog screenshots
+2016-04-28 - Update index page
+2016-04-28 - Cable config
+2016-04-28 - Production cable allow config
+2016-04-28 - Production cable config
+2016-04-28 - Merge branch 'actioncable'
+2016-04-28 - Add new feature #46
+2016-04-28 - Rename *.js.coffee -> *.coffee
+2016-04-27 - About page for small screen
+2016-04-27 - Fixing unsubscribe feature
+2016-04-27 - Admin subscribe manage
+2016-04-27 - Subscribe button text
+2016-04-27 - Fixing unscrible link
+2016-04-27 - Blog index page for small screen
+2016-04-27 - Blog content css adjust
+2016-04-27 - Blog content css adjust
+2016-04-27 - Merge branch 'subscribe'
+2016-04-27 - Fix subscribe system for rails5
+2016-04-27 - About page css adjust
+2016-04-26 - Update Gemfile
+2016-04-26 - Subscribe feature refactor
+2016-04-25 - Travis yml
+2016-04-25 - Travis ci
+2016-04-25 - Travis ci
+2016-04-25 - Remove database yml and just leave example file
+2016-04-25 - Fix travis install gem
+2016-04-25 - Style css adjust
+2016-04-25 - travis ci
+2016-04-25 - Fix test cases
+2016-04-25 - Remove useless js
+2016-04-25 - Remove layout ga
+2016-04-25 - Support turoblinks5
+2016-04-25 - ga
+2016-04-25 - Fix about page
+2016-04-25 - English index page
+2016-04-25 - Change to deploy master branch back
+2016-04-25 - Merge branch 'new_design'
+2016-04-24 - English deploy file
+2016-04-24 - deploy file update
+2016-04-24 - Deploy file update
+2016-04-24 - Deploy
+2016-04-24 - Adjust comment and qrcode feature
+2016-04-23 - Refactor comment and qrcode
+2016-04-21 - about page refactor
+2016-04-21 - Like feature done
+2016-04-21 - Add turbolinks, remove useless angularjs code
+2016-04-21 - Adjust paginator window argument
+2016-04-21 - refactor admin post blog feature without angularjs
+2016-04-20 - Some topbar style improve
+2016-04-20 - Refactor database with pg and foudation6( stage 1 )
+2016-04-20 - Upgrade rails4 -> rails5.beta3
+2016-03-17 - Travis ci script
+2016-03-16 - Update gems
+2016-03-08 - Guardfile for rails
+2016-03-08 - rspec config
+2016-03-08 - Fixed deprecated info
+2016-03-05 - Fixed deprecated info
+2016-03-05 - Update personal info
+2016-03-05 - Update README.md
+2016-03-05 - Add system dependencies
+2016-03-05 - Travis ci fix 3
+2016-03-05 - Travis ci fix 2
+2016-03-05 - Travis ci fix
+2016-03-05 - Fixes #44 update Rails to 4.2.5 Notice: mongoid config changed, you must update mongoid.yml at deploy server before deploy it.
+2015-09-11 - update favicon
+2015-08-04 - Update about page
+2015-07-07 - Update home page
+2015-05-30 - fix code margin
+2015-04-27 - Update README.zh-CN.md
+2015-04-27 - mongoib yml update
+2015-04-19 - fix english about page broken on iPhone
+2015-04-17 - label none translation
+2015-04-16 - reply notification except unsubscribe list
+2015-04-12 - add a tip
+2015-04-12 - type_en archives page fix
+2015-04-12 - add type_en to locale
+2015-04-12 - Update README.md
+2015-04-12 - refactor sidekiq namespace
+2015-04-12 - add a zh-CN  readme link
+2015-04-12 - zh-CN README
+2015-04-12 - translate README to English version
+2015-04-12 - fix a spell error
+2015-04-12 - add each other version link
+2015-04-12 - fix missing locales
+2015-04-12 - missing locales fixed
+2015-04-12 - add mina sidekiq
+2015-04-08 - power -> powerful
+2015-04-08 - add zh to default deploy destination, fix a bug
+2015-04-08 - assets update test
+2015-04-08 - a little change
+2015-04-08 - about section background
+2015-04-08 - default background color
+2015-04-08 - updated at
+2015-04-08 - english about page
+2015-04-08 - translate creative protocol into English
+2015-04-08 - try to fix unicorn before_exec
+2015-04-08 - fix session controller's i18n
+2015-04-08 - fix session i18n
+2015-04-08 - admin session page i18n
+2015-04-08 - fix unicorn pid path again
+2015-04-08 - fix unicorn pid path
+2015-04-08 - add English blog deploy configration
+2015-04-07 - unicorn zh config
+2015-04-07 - refactor unicorn file
+2015-04-07 - Merge branch 'i18n'
+2015-04-07 - add zh-CN locale file
+2015-04-07 - locale configuration added. post type translation.
+2015-04-07 - en i18n support
+2015-04-05 - fix repeat click like button when page refreshing
+2015-04-01 - fix markdown pre code margin & padding
+2015-03-31 - blog ptag move to left for good reading experience
+2015-03-29 - maximum
+2015-03-29 - maxnium-scale
+2015-03-29 - max-scale set
+2015-03-28 - add jiaoluo project
+2015-03-03 - fix #7 issue: rake assets:precompile error
+2015-02-25 - update rest-client gem for security reason.
+2015-02-25 - add cors
+2015-02-01 - Update README.md
+2015-01-31 - add deploy description
+2015-01-13 - Merge branch 'upgrade_gem'
+2015-01-13 - move stylesheet upto javascript tag
+2015-01-13 - upgrade Gem to the lastest
+2015-01-05 - modified at time fix
+2015-01-05 - aboutme page update
+2015-01-04 - about me page modify
+2014-12-31 - add happy new year tips :)
+2014-12-31 - add simple form configure
+2014-12-30 - update copyright year to 2015, Good Day!
+2014-12-28 - mobile href target='_blank' added
+2014-12-26 - Merge branch 'api'
+2014-12-26 - add blogs index json
+2014-12-26 - add api for mobile app
+2014-12-23 - archive show link href instead of binding click event
+2014-12-23 - markdown pre code style fix
+2014-12-06 - Merge branch 'posts_create_fix'
+2014-12-06 - fix preview bug when post new blog
+2014-11-25 - Merge branch 'readme_site'
+2014-11-25 - 补充推荐博客的详细技术规格
+2014-11-25 - Merge branch 'upgrade_rails'
+2014-11-25 - 更新 rails 版本与 rspec 升级
+2014-11-01 - Merge branch 'security_fix'
+2014-11-01 - upgrade rails and related gems.
+2014-10-10 - mobile about page adjust
+2014-10-10 - Merge branch 'sass_style'
+2014-10-10 - replace to scss style
+2014-10-10 - Merge branch 'about-page'
+2014-10-10 - add works and etc
+2014-10-08 - refact about page
+2014-09-30 - font size change to 100%
+2014-09-29 - guard file update for 4.0
+2014-09-29 - update gems
+2014-07-21 - clear dup code
+2014-07-21 - travis ci not use ruby-head
+2014-07-21 - foundation code update
+2014-07-21 - upgrade all gems to newest versions
+2014-07-18 - delete TODOlist of travis ci and code climate
+2014-07-17 - add code climdate test coverage
+2014-07-17 - add code climate
+2014-07-17 - add travis status
+2014-07-17 - add mongodb database yml
+2014-07-17 - add travis before script
+2014-07-17 - travis yml update
+2014-07-17 - Merge branch 'travisci'
+2014-07-17 - add travis yml
+2014-06-24 - Merge branch 'js_improve'
+2014-06-24 - reduce foundation js load time
+2014-06-08 - Merge branch 'password_log'
+2014-06-08 - 修正 log 日志记录后台登录的问题, 同时调整一下 post 请求参数放入body
+2014-06-04 - Merge branch 'liks_fix'
+2014-06-04 - liks -> likes
+2014-06-03 - Merge pull request #24 from kelby/more_concise
+2014-06-03 - 用更简洁的写法创建对象
+2014-06-03 - archive color
+2014-05-28 - TODO 列表更新
+2014-05-26 - Merge branch 'style'
+2014-05-26 - 微调小屏布局
+2014-05-26 - Merge branch 'email_subscribe'
+2014-05-26 - 修正邮件订阅输入框在大屏下过短的问题
+2014-05-26 - Merge branch 'home_style_adjust'
+2014-05-26 - 移出 aboutme css, 方便定制
+2014-05-26 - 在小屏下关于我显示调整
+2014-05-26 - 增大一点点字体, 优化文章重点, 阅读全文现在更明显了
+2014-05-26 - 将通用内容放入 common, 方便定制
+2014-05-26 - Merge branch 'response_picture'
+2014-05-26 - add photo size adjust
+2014-05-26 - fix flash alert twice
+2014-05-26 - adjust css and js position for quickly speed
+2014-05-26 - adjust css and js position for quickly speed
+2014-05-26 - Merge branch 'bundle_update_and_gz_fix'
+2014-05-26 - 优化速度的时候发现低版的 sprockets 未压缩js与css, 升级后即可. 所以同时升级所有的gem至最新版.
+2014-05-25 - Merge branch 'comment_manage_pre_fix'
+2014-05-25 - 评论的内容过长时不美观, 处理一下, 并处理管理评论时排序问题
+2014-05-25 - Merge branch 'newrelic'
+2014-05-25 - add newrelic
+2014-05-25 - Merge branch 'subscribe_fix'
+2014-05-25 - 改动 MAIL_SERVER 变量
+2014-05-25 - drop map for atwho
+2014-05-25 - Merge branch 'photo_upload_improve'
+2014-05-25 - 支持内容嵌入object, embbed等
+2014-05-25 - 改进图片上传的预览功能
+2014-05-25 - Merge branch 'blog_create_after_link_fix'
+2014-05-25 - 创建博客后跳回管理博客页面, 修正 confirm 不弹框的问题
+2014-05-25 - Merge branch 'comment_manager'
+2014-05-25 - 添加评论管理功能
+2014-05-25 - Merge branch 'master' of github.com:windy/wblog
+2014-05-25 - Merge branch 'email_refact'
+2014-05-25 - 添加 sidekiq 命名空间, 防止与其他应用冲突
+2014-05-25 - 重构邮件推送, 不使用 API, 使用 Rails4 的 preview email
+2014-05-19 - Rails version update
+2014-05-19 - Merge branch 'phone_like_fix'
+2014-05-19 - support comment name and email storage in cookies
+2014-05-19 - fix weixin absUrl() got error address
+2014-05-19 - markdown overflow-x fix
+2014-05-17 - Merge branch 'pre_style'
+2014-05-17 - fix pre element wrap the line
+2014-05-13 - gemfile.lock add unicorn
+2014-05-13 - add unicorn file
+2014-05-11 - drop gemfile ruby version
+2014-05-11 - Merge branch 'upgrade_rails4'
+2014-05-11 - change secrets to rails4.1 style
+2014-05-11 - add spring
+2014-05-11 - upgrade rails to 4.1.1
+2014-04-16 - adjust line height
+2014-04-09 - 更新 shell 指令
+2014-04-08 - 添加robbin的开源博客
+2014-04-07 - Merge branch 'mailer_sendcloud_fix'
+2014-04-07 - 增加回复邮件订阅的功能, 调整邮件模板( sendcloud is bad )
+2014-04-07 - 添加动态图片说明
+2014-04-07 - 增加图片说明
+2014-04-06 - 增加 middleman
+2014-04-06 - 修复 firefox 下评论换行的问题
+2014-04-06 - 更新管理后台的链接
+2014-04-06 - 增加后台管理说明
+2014-04-05 - 支持文本值缺省值的处理
+2014-04-05 - Merge branch 'no_blog_display_error_fix'
+2014-04-05 - rss 的输出描述调整
+2014-04-05 - 修正没有博客时首页有错误
+2014-04-04 - Merge branch 'comment_multisubmit_fix'
+2014-04-04 - 调整分类的图标
+2014-04-04 - 防止重复提交评论, 处理cloak元素
+2014-04-04 - 避免重复提交回复
+2014-04-03 - Merge branch 'comment_style_fix'
+2014-04-03 - 添加分类与标签提示
+2014-04-03 - 评论不换行问题的修正
+2014-04-03 - Merge branch 'disable_button_style_fix'
+2014-04-03 - 调整喜欢按钮的显示
+2014-04-03 - 调整 like 按钮的效果
+2014-04-03 - 修改评论的button样式在禁用时更有效
+2014-04-03 - Merge branch 'blog_style_code_fix'
+2014-04-03 - 调整博客里面的 code 样式
+2014-04-03 - Merge branch 'subscribe_feature'
+2014-04-03 - 添加订阅取消功能
+2014-04-02 - 订阅功能添加
+2014-04-03 - Merge branch 'ngcloak_fix'
+2014-04-03 - 避免未加载完显示{{, 并处理其他居中问题
+2014-04-03 - Merge branch 'blog_to_center'
+2014-04-03 - 将博客正文显示在中央
+2014-04-03 - Merge branch 'session_goback'
+2014-04-03 - 增加session urlback 功能
+2014-04-03 - 添加日志文件声明
+2014-04-03 - 去掉 mina-sidekiq, 手动发布
+2014-04-03 - 添加调试日志
+2014-04-03 - 修改队列名
+2014-04-03 - 添加 sidekiq 的布署脚本
+2014-04-02 - Merge branch 'comment_after_mail_feature'
+2014-04-02 - 增加评论通知与订阅通知功能
+2014-04-02 - 增加个人目录, 方便分享数据
+2014-04-02 - 允许调整 secret_token
+2014-04-02 - 添加使用说明
+2014-04-02 - 注释移除
+2014-04-02 - 添加 todo
+2014-04-02 - 更新 readme
+2014-04-02 - 增加新的配置例子
+2014-04-02 - 增加授权MIT
+2014-04-02 - 去掉assets下无用的文件
+2014-04-02 - Merge branch 'refactor_test'
+2014-04-02 - 重构了测试, 去掉没有用的文件
+2014-04-02 - Merge branch 'favicon_feature'
+2014-04-02 - new favico logo
+2014-04-02 - Merge branch 'meta_feature'
+2014-04-02 - 尝试增加搜索引擎优化的 meta 字段
+2014-04-02 - Merge branch 'do_with_photo'
+2014-04-02 - 去掉uploader无用的注释
+2014-04-02 - Merge branch 'footer_beauty'
+2014-04-02 - 页脚增加wblog的链接
+2014-04-02 - Merge branch 'style_beauty'
+2014-04-02 - 调整qrcode参数获取的限制为200
+2014-04-02 - 美化评论下面的链接和关于我的处理
+2014-04-02 - 首页关于我的美化
+2014-04-02 - Merge branch 'qrcode_png_feature'
+2014-04-02 - 将二维码生成改为图片显示
+2014-04-02 - Merge branch 'angular_load_error_fix'
+2014-04-02 - 去掉无用的代码
+2014-04-02 - edit初始化方式调整, 修正angular解析问题
+2014-04-02 - Merge branch 'about_me_mobile_no_show_fix'
+2014-04-02 - 修正 aboutme 不在手机端显示的bug
+2014-04-01 - lock file commit
+2014-04-01 - 去掉发布脚本中的 public
+2014-04-01 - Merge branch 'angularjs_production_fix'
+2014-04-01 - 再次修坑, 不使用 ngmin, 自己处理
+2014-04-01 - 添加gem ngmin-rails, 解决 angularjs 的坑
+2014-04-01 - 添加发布脚本
+2014-04-01 - 去掉ActiveRecord的重连
+2014-04-01 - 发布脚本个性
+2014-04-01 - unicorn 服务
+2014-04-01 - 修改源的方式
+2014-04-01 - 增加 Gemfile.lock
+2014-04-01 - 调整配置, 准备发布
+2014-04-01 - 快速编辑博客的路由添加
+2014-04-01 - 后台登录失败后提示
+2014-04-01 - Merge branch 'quick_edit_feature'
+2014-04-01 - 快速编辑的支持
+2014-04-01 - Merge branch 'markdown_link_target_feature'
+2014-04-01 - 文章内链接自动添加 _blank
+2014-04-01 - Merge branch 'new_post_worker_fix'
+2014-04-01 - 修改一个语法错误
+2014-04-01 - Merge branch 'comment_format_fix'
+2014-04-01 - 修正评论不换行的样式问题
+2014-04-01 - Merge branch 'mail_subscribe_feature'
+2014-04-01 - 调整ENV参数细节
+2014-04-01 - 订阅功能, 由于 sendcloud 的问题未测试
+2014-04-01 - Merge branch 'tip_deal'
+2014-04-01 - 去掉tip, 体验太差
+2014-04-01 - Merge branch 'adjust_directory'
+2014-04-01 - 整理文件注释
+2014-04-01 - script 将 rails 3 标识去掉
+2014-04-01 - 避免扫描后台
+2014-04-01 - doc 目录更新
+2014-04-01 - Merge branch 'title_feature'
+2014-04-01 - 去掉无用的页面
+2014-04-01 - 优化 title 的显示与网站名字的显示
+2014-04-01 - Merge branch 'rss_feature'
+2014-04-01 - google analytics 参数化
+2014-04-01 - rss 订阅功能
+2014-04-01 - 微调了主页的自我介绍
+2014-04-01 - Merge branch 'qrcode_feature'
+2014-04-01 - 微调二维码样式, 支持关闭二维码
+2014-04-01 - 二维码功能添加
+2014-04-01 - 修正需要登录的admin测试错误
+2014-04-01 - Merge branch 'auth_admin_feature'
+2014-04-01 - 管理员登录支持
+2014-04-01 - Merge branch 'admin_feature'
+2014-04-01 - 增加配置
+2014-03-31 - 增加浏览记录与返回首页
+2014-03-31 - 完善字段显示
+2014-03-31 - 操作按钮的css调整
+2014-03-31 - 后台博客管理与数据收集
+2014-03-31 - Merge branch 'likes_more_fix' into admin_feature
+2014-03-31 - 修正like不同的博客时互相影响的问题
+2014-03-31 - 添加标签选取功能
+2014-03-31 - 创建博客的功能
+2014-03-31 - 调整博客标题的下划线
+2014-03-31 - 新建博客的功能处理
+2014-03-31 - 框架
+2014-03-31 - Merge branch 'spec_error_fix'
+2014-03-31 - 修复随机失败
+2014-03-31 - Merge branch 'tags_feature'
+2014-03-31 - label 名字修改
+2014-03-31 - Merge branch 'tags_feature'
+2014-03-31 - tag 功能, 优化部分显示
+2014-03-31 - Merge branch 'type_select_feature'
+2014-03-31 - 支持时间线的历史记录
+2014-03-31 - blogs functiontest fix
+2014-03-31 - Merge branch 'blogs_functiontest_fix'
+2014-03-31 - post_list FactoryGirl 引发的问题修复
+2014-03-31 - Merge branch 'like_count_fix'
+2014-03-31 - 修正连续点击喜欢按钮显示不正确的问题
+2014-03-31 - 增加 liked_count
+2014-03-31 - Merge branch 'archive_timeline_feature'
+2014-03-31 - 加载更多功能实现
+2014-03-31 - Merge branch 'like_feature'
+2014-03-31 - 喜欢功能的提交
+2014-03-30 - like 功能后台实现
+2014-03-30 - Merge branch 'comment_feature'
+2014-03-30 - 评论错误信息处理
+2014-03-30 - 评论功能基本完成
+2014-03-30 - Merge branch 'show_feature'
+2014-03-30 - 支持前后博文的跳转
+2014-03-30 - 调整index页的布局
+2014-03-30 - Merge branch 'md_feature'
+2014-03-30 - 博客 h1, h2, hx 大小调整
+2014-03-30 - 博客代码高亮
+2014-03-30 - Merge branch 'new_design'
+2014-03-30 - 去掉 load more的 outline
+2014-03-30 - focus 的 outline 去掉
+2014-03-30 - 个人介绍格式更新
+2014-03-30 - spec error fixed
+2014-03-30 - 个人介绍的微调
+2014-03-30 - 不直接居中logo
+2014-03-30 - 增加 about me 页面
+2014-03-30 - 归档的加载更多
+2014-03-30 - 增加了文字图标
+2014-03-30 - 增加时间线
+2014-03-30 - 支持返回至首页
+2014-03-29 - 修复index冲突
+2014-03-29 - 添加 prev, next 按钮
+2014-03-29 - blog 页面设计
+2014-03-29 - 调整抽屉的全屏显示
+2014-03-29 - label added, index modified
+2014-03-29 - 添加comment表
+2014-03-29 - Merge branch 'new_design'
+2014-03-29 - 全新的设计 yes
+2014-03-29 - 改名为时间线
+2014-03-29 - 英文标识
+2014-03-29 - 初步的off-canvas样式
+2014-03-29 - 更新 foundation-rails 至最新版
+2014-03-29 - 安装foundation-rails
+2014-03-29 - 翻译的错误
+2014-03-29 - 去掉bson_ext的依赖
+2014-03-28 - 去掉无用的view
+2014-03-28 - Merge branch 'slim'
+2014-03-28 - 更新 erb to slim
+2014-03-28 - Merge branch 'rails4'
+2014-03-28 - ignore lock
+2014-03-28 - 去掉 Gemfile.lock
+2014-03-28 - 升级至 rails4
+2013-07-22 - 增加wikistyle对重体与斜体的支持
+2013-07-22 - 增加页底空白
+2013-07-22 - 修正翻页链接位置
+2013-07-21 - Merge branch 'master' of github.com:windy/wblog
+2013-07-21 - 支持翻页功能
+2013-07-14 - Update README.md
+2012-08-24 - change font to tahoma
+2012-08-21 - add font-family
+2012-08-21 - fix bShare's bug
+2012-08-21 - change disque to duoshuo
+2012-08-21 - add bShare
+2012-07-24 - fix beijing time format
+2012-07-21 - Merge branch 'master' of https://github.com/windy/wblog
+2012-07-21 - 后台创建后跳转回主页
+2012-07-07 - modify about page
+2012-07-01 - 增加评论功能,整合 disqus
+2012-06-28 - Update master
+2012-06-26 - head css about me
+2012-06-26 - 单独打开某篇博客时,订阅的显示不正确,修改之
+2012-06-26 - 美化订阅功能
+2012-06-25 - 补充一个用例
+2012-06-25 - 博客排序采用创建时倒序
+2012-06-25 - 将上传图片的目录进行共享
+2012-06-25 - rubygems changed
+2012-06-25 - 增加访问统计
+2012-06-25 - wiki风格的文章
+2012-06-25 - 增加事件的return false
+2012-06-25 - mongoid config modify
+2012-06-25 - 源改为rubygems.org
+2012-06-25 - rvm cap
+2012-06-25 - 增加布署文件
+2012-06-25 - 支持图片上传, 增加rss订阅
+2012-06-24 - 创建comment
+2012-06-24 - 现在导航可以工作了
+2012-06-24 - 增加新建博客的功能
+2012-06-23 - 增加后台管理
+2012-06-23 - 增加后台管理,并将mongoid切回2.x版本, 因为rspec过不了
+2012-06-23 - 最新版本 3.2.6
+2012-06-23 - 增加样式和布局
+2012-06-23 -  删除index
+2012-06-23 - 初始化mongoid,rails3.2.6, rspec
