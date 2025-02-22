@@ -60,6 +60,7 @@ zh-CN:
               blank: '请输入有价值的评论'
               invalid: '请输入有价值的评论'
               too_short: '请输入有价值的评论'
+              sensitive_word: '评论内容包含敏感词'
   comment_placeholder:
     content: '发表你的评论...'
     name: '名字'
