@@ -8,16 +8,21 @@ Bundler.require(*Rails.groups)
 
 module Wblog
   class Application < Rails::Application
-
-    config.generators do |g|
-      g.test_framework :rspec,
-        fixtures: true,
+    # Load sensitive words configuration from ss.yml
+    config.before_configuration do
+      ss_path = Rails.root.join('config/ss.yml')
+      if File.exist?(ss_path)
+        ss_config = YAML.load_file(ss_path)
+        config.sensitive_words = ss_config['sensitive_words'] || []
         view_specs: false,
         helper_specs: false,
         routing_specs: false,
         controller_specs: false,
         request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
+      else
+        config.sensitive_words = []
+      end
     end
 
     config.generators.assets = false
