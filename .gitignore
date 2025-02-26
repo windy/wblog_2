@@ -4,6 +4,11 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Clacky specific configuration
+.1024*
+!.1024
+.breakpoints
+
 # Ignore bundler config.
 /.bundle
 
@@ -39,6 +44,7 @@ yarn-debug.log*
 /public/assets/*
 /tags
 
+# Configuration files
 /config/application.yml
 /config/mongoid.yml
 /config/database.yml
@@ -47,9 +53,31 @@ yarn-debug.log*
 *.old
 *.bak
 *~
+
+# Environment files
 .env
+.env.*
 .byebug_history
 .DS_Store
 
+# Ruby/Rails specific
+.ruby-version
+vendor/bundle/
+vendor/ruby/
+.ruby-gemset
+coverage/
+.rspec_status
+
+# Build artifacts
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.tmproj
+*.esproj
