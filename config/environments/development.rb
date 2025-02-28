@@ -74,6 +74,6 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  # Allow Clacky development hosts
-  config.hosts << '3000-3b887b8de3de-web.clackypaas.com'
+  # Allow all hosts in development environment
+  config.hosts << /.*/
 end
