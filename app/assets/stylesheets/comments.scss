@@ -84,7 +84,6 @@
   }
 }
 
-
 .comment-success {
   color: #66FAB5;
 }
@@ -94,7 +93,6 @@
 }
 
 .comment-wrapper {
-
   &:hover {
     background-color: #444444;
   }
@@ -108,5 +106,59 @@
     color: #DDDDDD;
     word-break: break-all;
   }
+}
 
+// Image upload styles
+.comment-image-upload {
+  margin-bottom: 1rem;
+  
+  .progress {
+    height: 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 0.25rem;
+    
+    .progress-bar {
+      background-color: #008cba;
+      transition: width 0.3s ease;
+    }
+  }
+  
+  .image-preview {
+    max-width: 300px;
+    border: 1px solid #5E5E5E;
+    padding: 0.5rem;
+    background-color: #444444;
+    
+    img {
+      width: 100%;
+    }
+  }
+}
+
+// Comment image display
+.comment-image {
+  max-width: 300px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  
+  img {
+    border: 1px solid #5E5E5E;
+    padding: 0.25rem;
+    background-color: #444444;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+#comment_upload_photo {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #DDDDDD;
+  border-color: #5E5E5E;
+  
+  &:hover {
+    background-color: #444444;
+    color: white;
+  }
 }

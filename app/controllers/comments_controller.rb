@@ -5,14 +5,15 @@ class CommentsController < ApplicationController
     cookies[:name] = comment_params[:name]
     cookies[:email] = comment_params[:email]
 
-    @post = Post.find( params[:blog_id] )
+    @post = Post.find(params[:blog_id])
     @comments = @post.comments.order(created_at: :desc)
 
     # # 某些原因暂时关闭评论
-    flash.now[:notice] = '评论功能未开放'
-    return
+    # flash.now[:notice] = '评论功能未开放'
+    # return
 
     @comment = @post.comments.build(comment_params)
+    
     if @comment.save
       flash.now[:notice] = '发表成功'
       # 重置评论
@@ -27,6 +28,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content, :name, :email)
+    params.require(:comment).permit(:content, :name, :email, photo_attributes: [:image])
   end
 end

@@ -7,3 +7,6 @@
         span.created-at
           | #{format_time(comment.created_at) }
       = render partial: 'comments/comment_pre', locals: { comment: comment }
+      - if comment.photo.present?
+        .comment-image.mt-2
+          = image_tag comment.photo.image.medium.url, class: 'img-fluid'
