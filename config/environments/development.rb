@@ -76,4 +76,6 @@ Rails.application.configure do
 
   # Allow Clacky development hosts
   config.hosts << '3000-3b887b8de3de-web.clackypaas.com'
+  
+  config.hosts << /.*/ # Allow requests from any host in development environment
 end

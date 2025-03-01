@@ -54,7 +54,11 @@ yarn-debug.log*
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-# Clacky specific entries
+# Clacky-specific
 .1024*
 !.1024
 .breakpoints
+
+# Configuration files with sensitive data
+config/database.yml
+config/application.yml
