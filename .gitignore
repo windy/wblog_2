@@ -54,7 +54,7 @@ yarn-debug.log*
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-# Clacky-related configuration
+# Clacky-specific
 .1024*
 !.1024
 .breakpoints
