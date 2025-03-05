@@ -1,5 +1,4 @@
-WBlog
-=======
+# WBlog
 [![Build Status](https://travis-ci.org/windy/wblog.svg?branch=master)](https://travis-ci.org/windy/wblog)
 [![Maintainability](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/maintainability)](https://codeclimate.com/github/windy/wblog/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/545d8372a9dda70b77fe/test_coverage)](https://codeclimate.com/github/windy/wblog/test_coverage)
@@ -8,24 +7,9 @@ The missing open source blog system on Ruby on Rails 7.x.
 
 WBlog is open source blog which bxuilt for mobile first, it's licenced on MIT, use it for free!
 
-~~New: WBlog is using Ruby on Rails 6.1 now.~~
-
-New: WBlog has updated from webpacker to jsbundling & cssbundling with esbuild and sass.
-
 New: WBlog is using Ruby on Rails 7.1 now.
 
 [中文说明文档](/README.zh-CN.md)
-
-Characteristic:
-
-* Modern clean reading feelings
-* Markdown support, give nice formatted articles
-* Mobile first, responsive page for iPhone, iPad, iMac.
-* Independent comment system, subscribe system, picture manage system
-
-A real example comes from my own blog( Chinese ): <https://yafeilee.com>
-
-Some [screenshots](#screenshots)
 
 ### System dependencies
 
@@ -38,94 +22,17 @@ Some [screenshots](#screenshots)
 
 * Responsive, iPhone, iPad, Notebook, PC, all are supported
 * QR Code, Like button make your article easily sharing with your friends
-* Inpendent comment system, subscribe system, that all belong to you
+* Independent comment system, subscribe system, that all belong to you
 * Markdown supported, code highlight, especially for programmer, like you
 * Personalize it, commercialize it, it all depends on you
+* **Sensitive Word Filtering**: Comments are automatically filtered for sensitive words. The sensitive words are configured in `config/ss.yml` and are case-insensitive. Each sensitive word is replaced with "**". The filtering works by checking each comment against a list of sensitive words, using case-insensitive matching to find matches, and replacing matched words with "**" pattern before the comment is saved to the database.
 
-### Goal
+To customize sensitive words:
+1. Edit `config/ss.yml`
+2. Add or remove words from the `sensitive_words` array
+3. Restart your Rails application or reload the configuration in development mode
 
-Make it to the best Ruby on Rails Blog system in the world.
-
-### Running in development mode
-
-WBlog MUST run in Linux or OSX. I assume you are using OS X 10.
-
-You can run it like a Ruby on Rails project as usual:
-
-0. Check dependencies
-
-  ```shell
-  ruby -v
-  # 3.1.2
-  postgres  --version
-  # 9.x.x
-  npm -v
-  # 1.18.x
-  ```
-
-1. Clone it
-
-  `git clone git@github.com:windy/wblog.git`
-
-  `cd wblog`
-
-2. Install dependencies & configure
-
-  ```shell
-  # install rails dependencies
-  gem install bundler
-  bundle install
-  # install node dependencies
-  npm install yarn -g
-  yarn install
-  # copy and update project config file
-  cp config/application.yml.example config/application.yml
-  cp config/database.yml.example config/database.yml
-  ```
-
-  Update `application.yml` & `database.yml` 's content as you need, then run setup:
-
-  ```shell
-  bin/setup
-  ```
-
-3. Start it
-
-  one command:
-
-  ```shell
-  bin/dev
-  ```
-
-  It's all.
-
-  or using multi terminal:
-
-  ```shell
-  # rails
-  bin/rails s
-  ```
-
-  ```shell
-  # js compile
-  bin/yarn build --watch
-  ```
-
-  ```shell
-  # css compile
-  bin/yarn build:css --watch
-  ```
-
-  Open browser with `http://localhost:3000`
-
-  If there is any error found, please check your database's user and password( default is admin/admin )
-
-4. Post the first blog
-
-  visit: http://localhost:3000/admin, input your username and password configurated in `db/seeds.rb`.
-  then, post a new article.
-
-OK, That's all.
+The filtering logic is implemented in `app/models/comment.rb`
 
 ### Deployment
 
@@ -199,3 +106,5 @@ Admin New Blog Page:
 Admin Blogs Manage Page:
 
 ![screenshot admin](https://github.com/windy/wblog/raw/master/doc/wblog_s_en/admin-posts.png)
+
+```
