@@ -11,6 +11,18 @@ zh-CN:
   none: '无'
   qrcodetips: '扫一扫继续阅读或者帮我分享至朋友圈'
 
+  vote:
+    what_do_you_think: '你觉得这篇文章怎么样？'
+    types:
+      recommend: '推荐'
+      so_so: '马马虎虎'
+      swipe_away: '划走'
+    total_votes: '总投票数'
+    already_voted: '你已投票'
+    vote_success: '投票成功'
+    vote_updated: '投票已更新'
+    vote_error: '投票失败'
+
   views:
     pagination:
       previous: '上一页'
@@ -60,6 +72,22 @@ zh-CN:
               blank: '请输入有价值的评论'
               invalid: '请输入有价值的评论'
               too_short: '请输入有价值的评论'
+        vote:
+          attributes:
+            ip_address:
+              blank: 'IP地址不能为空'
+              taken: '你已经对这篇文章投过票了'
+            vote_type:
+              blank: '投票类型不能为空'
+              inclusion: '投票类型不正确'
+    models:
+      vote: '投票'
+    attributes:
+      vote:
+        vote_type: '投票类型'
+        ip_address: 'IP地址'
+        created_at: '投票时间'
+        
   comment_placeholder:
     content: '发表你的评论...'
     name: '名字'
@@ -108,6 +136,14 @@ zh-CN:
       op:
         enable: '启用'
         disable: '禁用'
+        
+    votes: '投票管理'
+    votes_head:
+      post: '文章'
+      vote_type: '投票类型'
+      ip_address: 'IP地址'
+      created_at: '投票时间'
+      operation: '操作'
 
     back: '返回首页'
     logout: '退出'
@@ -119,6 +155,7 @@ zh-CN:
       comments_count: '评论数'
       visited_count: '浏览数'
       subscribes_count: '订阅数'
+      votes_count: '投票数'
     session:
       title: '登录后台'
       username: '用户名'

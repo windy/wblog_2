@@ -11,6 +11,18 @@ en:
   none: 'None'
   qrcodetips: 'Continue reading with mobile phone or share it to Wechat Puppy'
 
+  vote:
+    what_do_you_think: 'What do you think about this article?'
+    types:
+      recommend: 'Recommend'
+      so_so: 'Just so so'
+      swipe_away: 'Swipe away'
+    total_votes: 'Total votes'
+    already_voted: 'You have already voted'
+    vote_success: 'Vote successful'
+    vote_updated: 'Vote updated'
+    vote_error: 'Vote failed'
+
   views:
     pagination:
       previous: 'Prev'
@@ -46,6 +58,25 @@ en:
 
   comment_attributes:
     email: 'Format Validation Failed'
+  activerecord:
+    errors:
+      models:
+        vote:
+          attributes:
+            ip_address:
+              blank: 'IP address cannot be blank'
+              taken: 'You have already voted on this post'
+            vote_type:
+              blank: 'Vote type cannot be blank'
+              inclusion: 'Invalid vote type'
+    models:
+      vote: 'Vote'
+    attributes:
+      vote:
+        vote_type: 'Vote type'
+        ip_address: 'IP address'
+        created_at: 'Voted at'
+        
   comment_placeholder:
     content: 'Write your viewpoint...'
     name: 'Your Name'
@@ -94,6 +125,14 @@ en:
       op:
         enable: 'Enable'
         disable: 'Disable'
+        
+    votes: 'Manage Votes'
+    votes_head:
+      post: 'Post'
+      vote_type: 'Vote Type'
+      ip_address: 'IP Address'
+      created_at: 'Voted at'
+      operation: 'Operation'
 
     back: 'Back to Home'
     logout: 'Logout'
@@ -105,6 +144,7 @@ en:
       comments_count: 'Comments Count'
       visited_count: 'Visited Count'
       subscribes_count: 'Subscribes Count'
+      votes_count: 'Votes Count'
     session:
       title: 'Login dashboard'
       username: 'Username'

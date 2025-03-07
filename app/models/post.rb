@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :labels
 
   has_many :likes
+  has_many :votes
 
   validates :title, :presence=>true, :uniqueness=> true
   validates :content, :presence=>true, :length => { :minimum=> 3 }
@@ -49,5 +50,29 @@ class Post < ActiveRecord::Base
 
   def liked_by?(like_id)
     !! self.likes.where(id: like_id).first
+  end
+  
+  # Vote counting methods
+  def recommends_count
+    votes.recommends.count
+  end
+  
+  def so_sos_count
+    votes.so_sos.count
+  end
+  
+  def swipe_aways_count
+    votes.swipe_aways.count
+  end
+  
+  # Check if user with given IP has already voted
+  def voted_by?(ip_address)
+    votes.where(ip_address: ip_address).exists?
+  end
+  
+  # Get the vote type for a specific IP address
+  def vote_type_for(ip_address)
+    vote = votes.find_by(ip_address: ip_address)
+    vote&.vote_type
   end
 end

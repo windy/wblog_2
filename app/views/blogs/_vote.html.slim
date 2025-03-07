@@ -1,0 +1,23 @@
+.vote-container data-controller="vote" data-post-id=post.id data-vote-url=blog_votes_path(post) data-current-vote=post.vote_type_for(request.remote_ip)
+  h4 = t('vote.what_do_you_think')
+  
+  .vote-buttons
+    button.vote-button.vote-button-recommend data-vote-type="recommend" data-action="click->vote#vote" data-vote-target="button"
+      i.fa.fa-thumbs-up
+      .vote-label = t('vote.types.recommend')
+      .vote-count data-vote-target="recommendCount" = post.recommends_count
+      
+    button.vote-button.vote-button-so-so data-vote-type="so_so" data-action="click->vote#vote" data-vote-target="button"
+      i.fa.fa-meh-o
+      .vote-label = t('vote.types.so_so')
+      .vote-count data-vote-target="soSoCount" = post.so_sos_count
+      
+    button.vote-button.vote-button-swipe-away data-vote-type="swipe_away" data-action="click->vote#vote" data-vote-target="button"
+      i.fa.fa-thumbs-down
+      .vote-label = t('vote.types.swipe_away')
+      .vote-count data-vote-target="swipeAwayCount" = post.swipe_aways_count
+  
+  .vote-stats
+    .vote-stat-item
+      i.fa.fa-thumbs-up
+      span = "#{t('vote.total_votes')}: #{post.votes.count}"

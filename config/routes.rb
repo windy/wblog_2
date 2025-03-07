@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get :refresh
       end
     end
+    resources :votes, only: [:create]
   end
 
   resources :archives, only: [:index]
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
         post :preview
       end
       resources :comments, only: [:index, :destroy]
+      resources :votes, only: [:create]
     end
 
     resources :all_comments, only: [:index, :destroy]

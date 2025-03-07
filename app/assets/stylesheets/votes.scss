@@ -1,0 +1,167 @@
+.vote-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #333333;
+  border-radius: 4px;
+  text-align: center;
+  
+  h4 {
+    color: #EBEBEB;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+.vote-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.vote-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #5E5E5E;
+  background-color: rgba(51, 51, 51, 0.8);
+  border-radius: 4px;
+  color: #DDDDDD;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  position: relative;
+  
+  &:hover {
+    background-color: #444444;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  i {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .vote-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .vote-count {
+    font-size: 0.8rem;
+    color: #b3b3b3;
+  }
+  
+  &.loading {
+    opacity: 0.6;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      margin-left: -10px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+// Specific styling for each vote type
+.vote-button-recommend {
+  border-color: #2DC26B;
+  
+  &:hover {
+    background-color: rgba(45, 194, 107, 0.1);
+  }
+  
+  &.active {
+    background-color: rgba(45, 194, 107, 0.3);
+    border-color: #2DC26B;
+    color: #66FAB5;
+  }
+}
+
+.vote-button-so-so {
+  border-color: #F9A825;
+  
+  &:hover {
+    background-color: rgba(249, 168, 37, 0.1);
+  }
+  
+  &.active {
+    background-color: rgba(249, 168, 37, 0.3);
+    border-color: #F9A825;
+    color: #FFD180;
+  }
+}
+
+.vote-button-swipe-away {
+  border-color: #D32F2F;
+  
+  &:hover {
+    background-color: rgba(211, 47, 47, 0.1);
+  }
+  
+  &.active {
+    background-color: rgba(211, 47, 47, 0.3);
+    border-color: #D32F2F;
+    color: #FF7A7A;
+  }
+}
+
+.vote-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  color: #b3b3b3;
+  font-size: 0.9rem;
+  
+  .vote-stat-item {
+    display: flex;
+    align-items: center;
+    
+    i {
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+.vote-message {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: none;
+  
+  &.success {
+    background-color: rgba(45, 194, 107, 0.1);
+    border: 1px solid rgba(45, 194, 107, 0.3);
+    color: #66FAB5;
+  }
+  
+  &.error {
+    background-color: rgba(211, 47, 47, 0.1);
+    border: 1px solid rgba(211, 47, 47, 0.3);
+    color: #FF7A7A;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
