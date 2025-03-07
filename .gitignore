@@ -4,6 +4,11 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Clacky-related
+.1024*
+!.1024
+.breakpoints
+
 # Ignore bundler config.
 /.bundle
 
@@ -26,6 +31,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Node-related
 /public/packs
 /public/packs-test
 /node_modules
@@ -33,12 +39,16 @@
 yarn-debug.log*
 .yarn-integrity
 
+# Editor and OS files
 *.swp
+.DS_Store
 
+# Uploads and assets
 /public/uploads/*
 /public/assets/*
 /tags
 
+# Environment and config files
 /config/application.yml
 /config/mongoid.yml
 /config/database.yml
@@ -47,14 +57,8 @@ yarn-debug.log*
 *.old
 *.bak
 *~
-.env
+.env*
 .byebug_history
-.DS_Store
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
-
-# Clacky-related configuration
-.1024*
-!.1024
-.breakpoints

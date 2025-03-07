@@ -75,5 +75,5 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
   
   # Allow requests from any host in development environment
-  config.hosts << /.*/ if config.respond_to?(:hosts)
+  config.hosts << /.*/
 end
