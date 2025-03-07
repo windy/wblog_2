@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :post
+  belongs_to :photo, optional: true
 
   validates :name, presence: true
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }

@@ -41,6 +41,17 @@
     margin-right: 0.275rem;
     margin-top: 0.5rem;
   }
+  
+  .comment-upload-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #DDDDDD;
+    cursor: pointer;
+  }
+  
+  .comment-image-upload {
+    margin-top: 0.5rem;
+  }
 }
 
 .comment-diag {
@@ -109,4 +120,24 @@
     word-break: break-all;
   }
 
+}
+
+.comment-image-container {
+  margin: 1rem 0;
+  clear: both;
+}
+
+.comment-image {
+  max-width: 300px;
+  max-height: 400px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #5E5E5E;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  padding: 3px;
+  background-color: #444444;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  clear: both;
 }

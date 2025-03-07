@@ -8,15 +8,29 @@ class CommentsController < ApplicationController
     @post = Post.find( params[:blog_id] )
     @comments = @post.comments.order(created_at: :desc)
 
-    # # 某些原因暂时关闭评论
-    flash.now[:notice] = '评论功能未开放'
-    return
-
     @comment = @post.comments.build(comment_params)
+
+    # 处理图片上传
+    if params[:comment][:photo].present?
+      begin
+        photo = Photo.new(image: params[:comment][:photo])
+        if photo.save
+          @comment.photo = photo
+        else
+          flash.now[:alert] = '图片上传失败，但评论仍会保存'
+        end
+      rescue => e
+        flash.now[:alert] = '图片处理出错，但评论仍会保存'
+        Rails.logger.error("图片上传错误: #{e.message}")
+      end
+    end
+
     if @comment.save
       flash.now[:notice] = '发表成功'
       # 重置评论
       @comment = Comment.new
+    else
+      flash.now[:alert] = @comment.errors.full_messages.join(', ')
     end
   end
 
