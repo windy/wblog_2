@@ -13,3 +13,6 @@ application.register("qrcode", QrcodeController)
 
 import AdminLabelController from "./admin_label_controller"
 application.register("admin-label", AdminLabelController)
+
+import PollController from "./poll_controller"
+application.register("poll", PollController)
