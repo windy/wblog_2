@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :archives, only: [:index]
   resources :photos, only: [:create]
+  resources :votes, only: [:create]
+  resources :polls, only: [:show]
 
   get '/about', to: 'home#about'
 

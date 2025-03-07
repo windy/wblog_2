@@ -1,10 +1,21 @@
 class Admin::PostsController < Admin::BaseController
   def new
     @post = Post.new
+    # Initialize a default Poll with 3 empty PollOptions
+    @post.build_poll
+    3.times { @post.poll.poll_options.build }
   end
 
   def edit
     @post = Post.find( params[:id] )
+    # If post doesn't have a poll, create one with 3 empty options
+    if @post.poll.nil?
+      @post.build_poll
+      3.times { @post.poll.poll_options.build }
+    elsif @post.poll.poll_options.empty?
+      # If poll exists but has no options, create 3 empty ones
+      3.times { @post.poll.poll_options.build }
+    end
   end
 
   def destroy
@@ -52,6 +63,16 @@ class Admin::PostsController < Admin::BaseController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, label_ids: [])
+    params.require(:post).permit(
+      :title, 
+      :content, 
+      label_ids: [], 
+      poll_attributes: [
+        :id, 
+        :title, 
+        :_destroy, 
+        poll_options_attributes: [:id, :content, :_destroy]
+      ]
+    )
   end
 end

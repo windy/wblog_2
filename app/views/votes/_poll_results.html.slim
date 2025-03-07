@@ -1,0 +1,34 @@
+.poll-results-list
+  - max_votes = poll.poll_options.maximum(:votes_count) || 0
+  - total_votes = poll.poll_options.sum(:votes_count)
+  
+  - poll.poll_options.each do |option|
+    - percentage = total_votes > 0 ? (option.votes_count.to_f / total_votes * 100).round(1) : 0
+    - is_highest = option.votes_count == max_votes && max_votes > 0
+    
+    .poll-option.mb-3 class=("highest-vote" if is_highest) data-option-id=option.id
+      .d-flex.justify-content-between.mb-1
+        span.option-content 
+          = option.content
+          - if is_highest
+            span.badge.badge-success.ml-2 领先
+        span.option-stats
+          span.vote-count = option.votes_count
+          |  票 (
+          span.vote-percentage = percentage
+          | %)
+      
+      .progress
+        .progress-bar role="progressbar" style="width: #{percentage}%" aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100"
+  
+  .text-muted.mt-3
+    small 投票结果实时更新
+
+style
+  |
+    .highest-vote .option-content {
+      font-weight: bold;
+    }
+    .highest-vote .progress-bar {
+      background-color: #28a745;
+    }

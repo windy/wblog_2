@@ -18,4 +18,80 @@
           = f.input :content, :as=> :text, :label => false, input_html: { id: 'content-input' }
 
         .tab-pane.fade.markdown#preview
-        = f.button :submit
+
+      .row.mt-4.poll-section
+        .col-sm-8
+          = f.simple_fields_for :poll do |poll|
+            .card
+              .card-header
+                h4 = t('admin.posts_attributes.poll.title', default: 'Add Poll')
+                
+              .card-body
+                = poll.input :title, label: t('admin.posts_attributes.poll.question', default: 'Poll Question'), placeholder: 'What do you think about...?', required: false
+
+                .mt-3
+                  h5 = t('admin.posts_attributes.poll.options', default: 'Poll Options')
+                  p.text-muted = t('admin.posts_attributes.poll.options_hint', default: 'Add between 3-5 options')
+
+                  .poll-options
+                    = poll.simple_fields_for :poll_options do |option|
+                      .poll-option.mb-2.d-flex.align-items-center
+                        = option.input :content, label: false, placeholder: 'Option text', wrapper_html: { class: 'mb-0 flex-grow-1' }
+                        - unless option.object.new_record?
+                          = option.check_box :_destroy, class: 'destroy-option'
+                          = option.label :_destroy, 'Remove', class: 'btn btn-sm btn-outline-danger ml-2'
+
+                  .poll-controls.mt-2
+                    button.btn.btn-sm.btn-outline-primary.add-option-btn type="button" = t('admin.posts_attributes.poll.add_option', default: 'Add Option')
+                    button.btn.btn-sm.btn-outline-danger.remove-poll-btn type="button" = t('admin.posts_attributes.poll.remove_poll', default: 'Remove Poll')
+
+      = f.button :submit
+
+
+javascript:
+  document.addEventListener('DOMContentLoaded', function() {
+    const pollOptionsContainer = document.querySelector('.poll-options');
+    const addOptionBtn = document.querySelector('.add-option-btn');
+    const removePollBtn = document.querySelector('.remove-poll-btn');
+    
+    if (addOptionBtn) {
+      addOptionBtn.addEventListener('click', function() {
+        const optionCount = pollOptionsContainer.querySelectorAll('.poll-option').length;
+        
+        if (optionCount < 5) {
+          const timestamp = new Date().getTime();
+          const newOption = document.createElement('div');
+          newOption.className = 'poll-option mb-2 d-flex.align-items-center';
+          newOption.innerHTML = `
+            <div class="form-group mb-0 flex-grow-1">
+              <input class="form-control" placeholder="Option text" type="text" name="post[poll_attributes][poll_options_attributes][${timestamp}][content]" id="post_poll_attributes_poll_options_attributes_${timestamp}_content">
+            </div>
+            <button class="btn btn-sm btn-outline-danger ml-2 remove-option-btn" type="button">Remove</button>
+          `;
+          pollOptionsContainer.appendChild(newOption);
+          
+          newOption.querySelector('.remove-option-btn').addEventListener('click', function() {
+            newOption.remove();
+          });
+        } else {
+          alert('Maximum 5 options allowed');
+        }
+      });
+    }
+    
+    if (removePollBtn) {
+      removePollBtn.addEventListener('click', function() {
+        const pollSection = document.querySelector('.poll-section');
+        if (pollSection) {
+          pollSection.style.display = 'none';
+        }
+      });
+    }
+    
+    // Initialize remove buttons for dynamically added options
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('remove-option-btn')) {
+        e.target.closest('.poll-option').remove();
+      }
+    });
+  });

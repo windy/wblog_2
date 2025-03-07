@@ -9,6 +9,43 @@
   .row.justify-content-center
     .col-xs-12.col-lg-9
       = render partial: "post", :locals=> { post: @post }
+
+      / Poll section
+      - if @post.poll.present?
+        .card.mt-4.poll-container data-controller="poll" data-poll-id=@post.poll.id
+          .card-header.bg-light
+            h5.card-title = @post.poll.title
+          .card-body
+            / Poll voting form (shown initially)
+            .poll-form data-poll-target="voteForm"
+              - @post.poll.poll_options.each do |option|
+                .form-check.mb-2
+                  input.form-check-input[
+                    type="radio" 
+                    name="poll_option" 
+                    id="poll_option_#{option.id}" 
+                    value="#{option.id}"
+                    data-action="change->poll#selectOption"
+                  ]
+                  label.form-check-label for="poll_option_#{option.id}" = option.content
+              
+              button.btn.btn-primary.mt-3[
+                type="button"
+                data-action="click->poll#submitVote"
+                data-poll-target="submitButton"
+                disabled
+              ] 投票
+              
+              .alert.alert-danger.mt-2.d-none data-poll-target="errorMessage"
+            
+            / Poll results (hidden initially)
+            .poll-results.d-none data-poll-target="results"
+              = render partial: "votes/poll_results", locals: { poll: @post.poll }
+              
+            .mt-3.text-muted.poll-info
+              span data-poll-target="totalVotes"
+                | 已有 #{@post.poll.poll_options.sum(:votes_count)} 人参与投票
+
 .comment-field
   = render partial: 'comment', locals: { comments: @comments, post: @post }
   p

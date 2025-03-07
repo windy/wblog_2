@@ -2,8 +2,10 @@ require 'markdown'
 class Post < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :labels
-
   has_many :likes
+  has_one :poll, dependent: :destroy
+
+  accepts_nested_attributes_for :poll, allow_destroy: true, reject_if: :all_blank
 
   validates :title, :presence=>true, :uniqueness=> true
   validates :content, :presence=>true, :length => { :minimum=> 3 }

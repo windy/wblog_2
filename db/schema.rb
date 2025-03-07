@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_20_142355) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_07_083455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -86,6 +86,23 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_20_142355) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "poll_options", force: :cascade do |t|
+    t.bigint "poll_id", null: false
+    t.string "content"
+    t.integer "votes_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_poll_options_on_poll_id"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_polls_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -94,6 +111,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_20_142355) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "poll_option_id", null: false
+    t.string "session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_option_id"], name: "index_votes_on_poll_option_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "poll_options", "polls"
+  add_foreign_key "polls", "posts"
+  add_foreign_key "votes", "poll_options"
 end
