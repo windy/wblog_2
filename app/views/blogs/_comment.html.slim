@@ -11,6 +11,12 @@ turbo-frame#comment-frame
           .row
             .col-12.col-lg-6
               = f.text_field :email, value: cookies[:email], placeholder: t('comment_placeholder.email')
+          .row
+            .col-12.col-lg-6
+              = f.file_field :image, class: 'form-control-file'
+          .row
+            .col-12.col-lg-12
+              small.form-text.text-muted 支持JPG、PNG、GIF格式图片，上传为可选项
           button.comment-submit type='submit' data-disable-with=t('comment_placeholder.submitting') #{t('comment_placeholder.submit')}
           - if info = flash.now[:notice]
             #alert-container.alert.alert-success

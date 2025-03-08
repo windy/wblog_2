@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :post
+  mount_uploader :image, PhotoUploader
 
   validates :name, presence: true
   validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
