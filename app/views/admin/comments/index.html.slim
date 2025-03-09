@@ -11,16 +11,20 @@
           th #{t('admin.comments_head.name')}
           th #{t('admin.comments_head.email')}
           th #{t('admin.comments_head.content')}
+          th 包含敏感词
+          th 敏感词数量
           th #{t('admin.comments_head.created_at')}
           th #{t('admin.comments_head.operation')}
       tbody
         - @comments.each do |comment|
-          tr
+          tr class="#{comment.has_sensitive_words? ? 'table-warning' : ''}"
             td #{comment.name}
             td
               = mail_to comment.email
             td
-              = simple_format(comment.content)
+              = simple_format(comment.display_content)
+            td #{comment.has_sensitive_words? ? '是' : '否'}
+            td #{comment.sensitive_word_count}
             td
               = format_time(comment.created_at)
 

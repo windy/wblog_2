@@ -43,3 +43,7 @@ MAIL_SERVER: ''
 DOMAIN_NAME: ''
 MAIL_USERNAME: ''
 MAIL_PASSWORD: ''
+
+# Tencent Cloud Text Security API Keys
+TENCENT_CLOUD_SECRET_ID: 'your_secret_id_here'
+TENCENT_CLOUD_SECRET_KEY: 'your_secret_key_here'

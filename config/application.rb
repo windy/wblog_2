@@ -41,5 +41,8 @@ module Wblog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Add lib directory to autoload paths to make those files available
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
