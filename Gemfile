@@ -57,6 +57,8 @@ gem 'mina-ng-puma', '>= 1.4.0', require: false
 gem 'mina-multistage', require: false
 gem 'mina-sidekiq', require: false
 gem 'mina-logs', require: false
+gem 'tencentcloud-sdk-common'
+gem 'tencentcloud-sdk-tms'
 
 group :development do
   gem 'rails_apps_testing'
