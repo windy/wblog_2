@@ -1,0 +1,22 @@
+- content_for(:title) do
+  | 更新日志 / Changelog
+
+.container
+  .row.justify-content-center
+    .col-sm-12.col-lg-9
+      h1.changelog-title 更新日志 / Changelog
+      
+      .changelog-timeline
+        - @changelogs.each do |changelog|
+          .changelog-item
+            .version-info
+              h3.version= changelog[:version]
+              .date= changelog[:date]
+            
+            .changelog-content
+              h4.title= changelog[:title]
+              ul.updates-list
+                - changelog[:updates].each do |update|
+                  li= update
+                  
+            .timeline-connector

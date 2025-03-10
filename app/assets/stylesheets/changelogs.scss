@@ -1,0 +1,128 @@
+.changelog-title {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  color: #333;
+  font-weight: 600;
+}
+
+.changelog-timeline {
+  position: relative;
+  padding-left: 1rem;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: #e9ecef;
+  }
+}
+
+.changelog-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 2rem;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #007bff;
+    left: -6px;
+    top: 0;
+    z-index: 1;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.version-info {
+  margin-bottom: 0.5rem;
+  
+  .version {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0 0.5rem 0.2rem 0;
+  }
+  
+  .date {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+  }
+}
+
+.changelog-content {
+  background-color: #f8f9fa;
+  padding: 1.2rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  .title {
+    color: #343a40;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .updates-list {
+    padding-left: 1.5rem;
+    margin-bottom: 0;
+    
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      color: #495057;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      &::before {
+        content: "•";
+        color: #007bff;
+        font-weight: bold;
+        display: inline-block;
+        width: 1rem;
+        margin-left: -1rem;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .changelog-item {
+    padding-left: 1.5rem;
+  }
+  
+  .version-info {
+    .version {
+      font-size: 1.3rem;
+      display: block;
+    }
+    
+    .date {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .changelog-content {
+    padding: 1rem;
+    
+    .title {
+      font-size: 1.1rem;
+    }
+  }
+}

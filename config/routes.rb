@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :archives, only: [:index]
+  resources :changelogs, only: [:index]
   resources :photos, only: [:create]
 
   get '/about', to: 'home#about'
