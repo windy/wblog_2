@@ -1,0 +1,47 @@
+.vote-section
+  .container
+    .row.justify-content-center
+      .col-12
+        - already_voted = @post.votes.exists?(session_id: session[:session_id])
+        - votes_count = @post.votes.count_by_option
+        - total_votes = @post.votes.count
+        - user_vote = @post.votes.find_by(session_id: session[:session_id])
+
+        .vote-form data-controller="vote"
+          h4.vote-title 文章评价
+          
+          - if already_voted
+            .vote-results
+              / p.voted-message 您已对本文进行了评价: 
+                / strong = { 'very_good' => '很棒', 'average' => '一般', 'pass_by' => '划过' }[user_vote.option]
+              
+              = render partial: 'votes/vote_results', locals: { votes_count: votes_count, total_votes: total_votes, user_vote: user_vote }
+          - else
+            .vote-options
+              p.vote-prompt 您对这篇文章的评价是？
+              .vote-buttons
+                = form_with model: [@post, Vote.new], url: blog_votes_path(@post), data: { vote_target: 'form', action: 'submit->vote#submit' } do |f|
+                  = f.hidden_field :option, data: { vote_target: 'option' }
+                  
+                  .btn-group
+                    button.btn.vote-btn.btn-very-good type="button" data-option="very_good" data-action="click->vote#selectOption"
+                      i.fas.fa-thumbs-up
+                      span 很棒
+                      .count = votes_count[:very_good]
+                    
+                    button.btn.vote-btn.btn-average type="button" data-option="average" data-action="click->vote#selectOption"
+                      i.fas.fa-meh
+                      span 一般
+                      .count = votes_count[:average]
+                    
+                    button.btn.vote-btn.btn-pass-by type="button" data-option="pass_by" data-action="click->vote#selectOption"
+                      i.fas.fa-thumbs-down
+                      span 划过
+                      .count = votes_count[:pass_by]
+                  
+                  .vote-status data-vote-target="status"
+          
+          .vote-summary.mt-3
+            p.total-votes 
+              | 总票数: 
+              span.count = total_votes

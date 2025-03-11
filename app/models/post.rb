@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :labels
 
   has_many :likes
+  has_many :votes, dependent: :destroy
 
   validates :title, :presence=>true, :uniqueness=> true
   validates :content, :presence=>true, :length => { :minimum=> 3 }

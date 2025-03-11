@@ -1,0 +1,20 @@
+.vote-form data-controller="vote"
+  h4.vote-title 文章评价
+  
+  - if flash[:notice]
+    .alert.alert-success= flash[:notice]
+  - if flash[:alert]
+    .alert.alert-danger= flash[:alert]
+  
+  .vote-results
+    p.voted-message
+      | 您已对本文进行了评价: 
+      - option_labels = { 'very_good' => '很棒', 'average' => '一般', 'pass_by' => '划过' }
+      / strong = option_labels[@user_vote&.option]
+    
+    = render partial: 'votes/vote_results', locals: { votes_count: @votes_count, total_votes: @total_votes, user_vote: @user_vote }
+  
+  .vote-summary.mt-3
+    p.total-votes 
+      | 总票数: 
+      span.count = @total_votes

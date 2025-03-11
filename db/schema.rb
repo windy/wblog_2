@@ -95,6 +95,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_09_104403) do
     t.integer "visited_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "enable_voting", default: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.bigint "post_id"
+    t.string "session_id"
+    t.string "option"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_votes_on_post_id"
+    t.index ["session_id", "post_id"], name: "index_votes_on_session_id_and_post_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

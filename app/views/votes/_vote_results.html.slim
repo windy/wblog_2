@@ -1,0 +1,32 @@
+.vote-results
+  .results-container
+    - option_labels = { 'very_good' => '很棒', 'average' => '一般', 'pass_by' => '划过' }
+    - option_icons = { 'very_good' => 'fa-thumbs-up', 'average' => 'fa-meh', 'pass_by' => 'fa-thumbs-down' }
+    - total = total_votes > 0 ? total_votes : 1
+    
+    .total-count.mb-3
+      strong 总投票数: 
+      span = total_votes
+
+    - ['very_good', 'average', 'pass_by'].each do |option|
+      - count = votes_count[option.to_sym]
+      - percent = ((count.to_f / total) * 100).round(1)
+      - is_user_vote = user_vote&.option == option
+      
+      .vote-result-item class=("user-voted" if is_user_vote)
+        .vote-result-header
+          .option-label
+            i.fas class=option_icons[option]
+            span = option_labels[option]
+          .vote-count
+            span = "#{count} 票 (#{percent}%)"
+        
+        .vote-result-bar
+          .progress
+            .progress-bar style="width: #{percent}%" class=("active" if is_user_vote)
+
+    .vote-note.mt-3
+      small 
+        | 注: 标黄的选项是您的投票
+        - if user_vote
+          |，感谢您的参与！

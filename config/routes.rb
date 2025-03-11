@@ -18,6 +18,11 @@ Rails.application.routes.draw do
         get :refresh
       end
     end
+    resources :votes, only: [:create]
+  end
+
+  resources :posts do
+    resources :votes, only: [:create]
   end
 
   resources :archives, only: [:index]
