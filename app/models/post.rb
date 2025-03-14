@@ -50,4 +50,11 @@ class Post < ActiveRecord::Base
   def liked_by?(like_id)
     !! self.likes.where(id: like_id).first
   end
+  
+  def average_score
+    scores = self.likes.pluck(:score)
+    return 0 if scores.empty?
+    
+    (scores.sum.to_f / scores.size).round(1)
+  end
 end
