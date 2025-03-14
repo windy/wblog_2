@@ -36,6 +36,11 @@ class Admin::PostsController < Admin::BaseController
 
   def update
     @post = Post.find( params[:id] )
+    
+    # 如果选择了删除封面图片的选项
+    if params[:post][:remove_cover_image] == '1' && @post.cover_image.attached?
+      @post.cover_image.purge
+    end
 
     if @post.update( post_params )
       flash[:notice] = '更新博客成功'
@@ -52,6 +57,6 @@ class Admin::PostsController < Admin::BaseController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, label_ids: [])
+    params.require(:post).permit(:title, :content, :cover_image, label_ids: [])
   end
 end

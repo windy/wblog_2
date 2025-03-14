@@ -1,5 +1,9 @@
 = render partial: 'post_head', locals: { post: post }
 
+- if post.cover_image.attached?
+  .blog-post-cover-image.mb-3
+    = image_tag post.cover_image.variant(resize_to_limit: [800, 400]), class: 'img-fluid rounded'
+
 .content.markdown
   == post.content_html
 

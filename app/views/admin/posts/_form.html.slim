@@ -4,6 +4,21 @@
       = f.input :title, label: t('admin.posts_attributes.title')
       = f.association :labels, input_html: { data: { 'admin-label-target': 'label', 'labels-data': Label.all.map(&:name) } }, label: t('admin.posts_attributes.labels')
 
+      / 封面图片上传字段
+      .form-group
+        = f.label :cover_image, t('admin.posts_attributes.cover_image')
+        = f.file_field :cover_image, class: 'form-control', accept: 'image/jpeg,image/png,image/gif'
+        small.form-text.text-muted 允许上传JPEG、PNG或GIF格式图片，大小不超过5MB
+      
+      / 如果已上传封面图片，显示预览和删除选项
+      - if @post.cover_image.attached?
+        .form-group
+          .cover-image-preview.mb-2
+            = image_tag @post.cover_image.variant(resize_to_limit: [300, 200]), class: 'img-thumbnail'
+          .form-check
+            = check_box_tag 'post[remove_cover_image]', '1', false, class: 'form-check-input'
+            = label_tag 'post[remove_cover_image]', '删除当前封面图片', class: 'form-check-label'
+
       / tabs and upload file field
       ul.nav.nav-tabs#tabs
         li.nav-item

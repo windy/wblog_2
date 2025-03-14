@@ -2,11 +2,30 @@ require 'markdown'
 class Post < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :labels
-
   has_many :likes
+  has_one_attached :cover_image
 
   validates :title, :presence=>true, :uniqueness=> true
   validates :content, :presence=>true, :length => { :minimum=> 3 }
+  
+  validate :cover_image_format_and_size
+  
+  def cover_image_format_and_size
+    return unless cover_image.attached?
+    
+    # 验证图片大小不超过5MB
+    if cover_image.byte_size > 5.megabytes
+      errors.add(:cover_image, 'size should be less than 5MB')
+      cover_image.purge
+    end
+    
+    # 验证图片类型
+    acceptable_types = ['image/jpeg', 'image/png', 'image/gif']
+    unless acceptable_types.include?(cover_image.content_type)
+      errors.add(:cover_image, 'must be a JPEG, PNG or GIF')
+      cover_image.purge
+    end
+  end
 
   def content_html
     self.class.render_html(self.content)
