@@ -4,9 +4,12 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :labels
 
   has_many :likes
+  has_many :votes, dependent: :destroy
 
   validates :title, :presence=>true, :uniqueness=> true
   validates :content, :presence=>true, :length => { :minimum=> 3 }
+
+  scope :votable, -> { where(enable_voting: true) }
 
   def content_html
     self.class.render_html(self.content)
@@ -49,5 +52,19 @@ class Post < ActiveRecord::Base
 
   def liked_by?(like_id)
     !! self.likes.where(id: like_id).first
+  end
+
+  def vote_count_for(type)
+    self.votes.where(vote_type: type).count
+  end
+
+  def vote_percentage_for(type)
+    total = total_votes
+    return 0 if total == 0
+    ((vote_count_for(type).to_f / total) * 100).to_i
+  end
+
+  def total_votes
+    self.votes.count
   end
 end

@@ -11,6 +11,15 @@ zh-CN:
   none: '无'
   qrcodetips: '扫一扫继续阅读或者帮我分享至朋友圈'
 
+  vote:
+    title: '为这篇博客投票'
+    excellent: '满分'
+    average: '一般'
+    poor: '划走'
+    total: '总投票数'
+    already_voted: '你已经对这篇博客投过票了'
+    enable_voting: '开启博客投票功能'
+
   views:
     pagination:
       previous: '上一页'
@@ -84,6 +93,7 @@ zh-CN:
       preview: '预览'
       upload_photo: '上传图片'
       submit: '提交'
+      enable_voting: '开启博客投票功能'
     posts_head:
       title: '标题'
       summary: '概要'
