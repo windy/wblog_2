@@ -1,0 +1,107 @@
+- if post.enable_voting
+  .voting-section data-controller="vote" data-post-id=post.id data-user-voted=(defined?(@user_vote) && @user_vote.present?).to_s data-vote-type=(defined?(@user_vote) && @user_vote ? @user_vote.vote_type : nil)
+    h4.voting-title #{t('vote.title', default: 'Vote for this post')}
+    .voting-buttons data-vote-target="buttons"
+      button.vote-button.excellent-button type="button" data-vote-type="excellent" data-vote-target="excellent" data-action="click->vote#castVote"
+        span.vote-label #{t('vote.excellent', default: 'Excellent')}
+        span.vote-stats
+          span.vote-count #{post.vote_count_for('excellent')}
+          | &nbsp;(
+          span.vote-percentage #{post.vote_percentage_for('excellent')}
+          | %)
+      
+      button.vote-button.normal-button type="button" data-vote-type="normal" data-vote-target="normal" data-action="click->vote#castVote"
+        span.vote-label #{t('vote.average', default: 'Average')}
+        span.vote-stats
+          span.vote-count #{post.vote_count_for('normal')}
+          | &nbsp;(
+          span.vote-percentage #{post.vote_percentage_for('normal')}
+          | %)
+      
+      button.vote-button.poor-button type="button" data-vote-type="poor" data-vote-target="poor" data-action="click->vote#castVote"
+        span.vote-label #{t('vote.poor', default: 'Poor')}
+        span.vote-stats
+          span.vote-count #{post.vote_count_for('poor')}
+          | &nbsp;(
+          span.vote-percentage #{post.vote_percentage_for('poor')}
+          | %)
+    
+    p.voting-results data-vote-target="result"
+      | #{t('vote.total', default: 'Total votes')}: #{post.total_votes}
+    
+    - if defined?(@user_vote) && @user_vote.present?
+      p.user-vote-message
+        | #{t('vote.already_voted', default: 'You have already voted for this post')}
+
+style
+  | .voting-section {
+  |   margin: 25px 0;
+  |   padding: 15px;
+  |   background-color: #f9f9f9;
+  |   border-radius: 8px;
+  |   border: 1px solid #e0e0e0;
+  | }
+  | .voting-title {
+  |   font-size: 1.2rem;
+  |   margin-bottom: 15px;
+  |   color: #333;
+  | }
+  | .voting-buttons {
+  |   display: flex;
+  |   justify-content: space-around;
+  |   flex-wrap: wrap;
+  |   margin-bottom: 15px;
+  | }
+  | .vote-button {
+  |   display: flex;
+  |   flex-direction: column;
+  |   align-items: center;
+  |   padding: 12px 20px;
+  |   margin: 5px;
+  |   border-radius: 5px;
+  |   border: 1px solid #ccc;
+  |   background-color: white;
+  |   cursor: pointer;
+  |   transition: all 0.2s ease;
+  | }
+  | .vote-button:hover {
+  |   background-color: #f1f1f1;
+  |   border-color: #aaa;
+  | }
+  | .vote-label {
+  |   font-weight: bold;
+  |   margin-bottom: 5px;
+  | }
+  | .vote-stats {
+  |   font-size: 0.9rem;
+  |   color: #666;
+  | }
+  | .excellent-button {
+  |   border-color: #4caf50;
+  | }
+  | .normal-button {
+  |   border-color: #2196F3;
+  | }
+  | .poor-button {
+  |   border-color: #f44336;
+  | }
+  | .user-voted {
+  |   background-color: rgba(0, 0, 0, 0.05);
+  |   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  | }
+  | .voted {
+  |   opacity: 0.7;
+  | }
+  | .voting-results {
+  |   text-align: center;
+  |   font-style: italic;
+  |   color: #666;
+  |   margin-top: 10px;
+  | }
+  | .user-vote-message {
+  |   text-align: center;
+  |   font-style: italic;
+  |   color: #666;
+  |   margin-top: 5px;
+  |   font-size: 0.9rem;
+  | }
