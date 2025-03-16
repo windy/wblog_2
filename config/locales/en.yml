@@ -66,6 +66,16 @@ en:
 
   archive:
     search: 'Search'
+    labels: 'Filter by labels'
+    apply_filters: 'Apply filters'
+    reset: 'Reset'
+    time_range:
+      all: 'All time'
+      month: 'Last month'
+      quarter: 'Last 3 months'
+      year: 'Last year'
+    search_results: '%{count} results found'
+    filtered_results: 'Filtered results'
 
   admin:
     new_post: 'New Post'

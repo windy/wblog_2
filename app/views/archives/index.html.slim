@@ -4,10 +4,38 @@
   .row.justify-content-center
     .col-sm-12.col-lg-9
       ul.archives-field
-        .search-wrapper
-          = form_with url: archives_path, method: 'GET' do |f|
-            .form-group
-              = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+        .filter-wrapper.mb-4
+          = form_with url: archives_path, method: 'GET', data: { controller: "archives-filter" } do |f|
+            .row
+              .col-md-8
+                .form-group
+                  = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+              .col-md-4
+                .form-group
+                  = f.select :time_range, options_for_select([[t('archive.time_range.all'), ''], [t('archive.time_range.month'), 'month'], [t('archive.time_range.quarter'), 'quarter'], [t('archive.time_range.year'), 'year']], @time_range), {}, class: 'form-control'
+            .row.mt-3
+              .col-12
+                .form-group
+                  label.d-block = t('archive.labels')
+                  .labels-selector
+                    = f.select :label_id, 
+                      options_for_select([[t('archive.all_labels'), '']] + @labels.map { |label| [label.name, label.id] }, @label_id),
+                      {}, 
+                      class: 'form-control'
+            .row.mt-3
+              .col-6
+                = f.submit t('archive.apply_filters'), class: 'btn btn-primary'
+              .col-6.text-right
+                = link_to t('archive.reset'), archives_path, class: 'btn btn-outline-secondary', data: { target: "archives-filter.resetLink" }
+            
+            - if @q.present? || @label_id.present? || @time_range.present?
+              .search-result-wrapper.mt-3
+                p.text-muted
+                  - if @q.present?
+                    = t('archive.search_results', count: @q_size || 0)
+                  - else
+                    = t('archive.filtered_results')
+                    
         - @posts.each do |post|
           li
             = link_to blog_path(post), class: 'blog-title' do
@@ -25,7 +53,5 @@
               i.fa.fa-heart
               span
                 = post.liked_count
-        - if @q.present?
-          .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+      
+      = paginate @posts, q: @q, label_id: @label_id, time_range: @time_range

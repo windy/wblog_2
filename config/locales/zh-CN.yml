@@ -80,6 +80,16 @@ zh-CN:
 
   archive:
     search: '搜索博客标题'
+    labels: '标签筛选'
+    apply_filters: '应用筛选'
+    reset: '重置'
+    time_range:
+      all: '全部时间'
+      month: '近一个月'
+      quarter: '近三个月'
+      year: '近一年'
+    search_results: '共 %{count} 条结果'
+    filtered_results: '筛选结果'
 
   admin:
     new_post: '新建博客'

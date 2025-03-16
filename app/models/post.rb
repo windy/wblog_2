@@ -10,6 +10,27 @@ class Post < ActiveRecord::Base
   validates :content, :presence=>true, :length => { :minimum=> 3 }
 
   scope :votable, -> { where(enable_voting: true) }
+  scope :with_labels, ->(label_id) {
+    return all if label_id.blank?
+    
+    # Handle both single ID and array cases for backward compatibility
+    label_ids = label_id.is_a?(Array) ? label_id : [label_id]
+    
+    joins(:labels).where(labels: { id: label_ids }).distinct
+  }
+  
+  scope :by_time_range, ->(time_range) {
+    case time_range
+    when 'month'
+      where('created_at >= ?', 1.month.ago)
+    when 'quarter'
+      where('created_at >= ?', 3.months.ago)
+    when 'year'
+      where('created_at >= ?', 1.year.ago)
+    else
+      all
+    end
+  }
 
   def content_html
     self.class.render_html(self.content)
