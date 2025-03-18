@@ -5,27 +5,60 @@
     .col-sm-12.col-lg-9
       ul.archives-field
         .search-wrapper
-          = form_with url: archives_path, method: 'GET' do |f|
+          = form_with url: archives_path, method: 'GET', data: { controller: "archives-filter" } do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
-        - @posts.each do |post|
-          li
-            = link_to blog_path(post), class: 'blog-title' do
-              == search_highlight(post.title, @q)
-            p.tags-field
-              i.fa.fa-calendar
-              span
-                = format_date(post.created_at)
-              i.fa.fa-eye
-              span
-                = post.labels_content
-              i.fa.fa-torah
-              span
-                = post.visited_count
-              i.fa.fa-heart
-              span
-                = post.liked_count
+
+            .filter-section
+              .time-filter
+                h5.filter-title = t('archive.time_filter')
+                .btn-group.time-options
+                  = f.radio_button :time_filter, "1m", id: "time_1m", class: "btn-check", checked: @time_filter == "1m", data: { action: "change->archives-filter#submitForm" }
+                  = f.label :time_filter_1m, t('archive.one_month'), class: "btn btn-outline-secondary #{@time_filter == '1m' ? 'active' : ''}", for: "time_1m"
+                  
+                  = f.radio_button :time_filter, "3m", id: "time_3m", class: "btn-check", checked: @time_filter == "3m", data: { action: "change->archives-filter#submitForm" }
+                  = f.label :time_filter_3m, t('archive.three_months'), class: "btn btn-outline-secondary #{@time_filter == '3m' ? 'active' : ''}", for: "time_3m"
+                  
+                  = f.radio_button :time_filter, "3y", id: "time_3y", class: "btn-check", checked: @time_filter == "3y", data: { action: "change->archives-filter#submitForm" }
+                  = f.label :time_filter_3y, t('archive.three_years'), class: "btn btn-outline-secondary #{@time_filter == '3y' ? 'active' : ''}", for: "time_3y"
+
+              .label-filter.mt-3
+                h5.filter-title = t('archive.label_filter')
+                .label-options
+                  - @labels.each do |label|
+                    .form-check.form-check-inline
+                      - is_selected = @selected_label_ids&.include?(label.id.to_s)
+                      = f.check_box :label_ids, { multiple: true, checked: is_selected, class: "form-check-input", data: { action: "change->archives-filter#submitForm" } }, label.id, nil
+                      = f.label "label_ids_#{label.id}", label.name, class: "form-check-label #{is_selected ? 'selected-label' : ''}"
+
+              - if @time_filter.present? || @selected_label_ids.present?
+                .clear-filters.mt-2
+                  = link_to t('archive.clear_filters'), archives_path(q: @q), class: "btn btn-sm btn-outline-danger", data: { action: "archives-filter#clearFilters" }
+
         - if @q.present?
           .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+            p.text-muted = t('archive.results_count', count: @posts.total_count || 0)
+            
+        - if @posts.any?
+          - @posts.each do |post|
+            li
+              = link_to blog_path(post), class: 'blog-title' do
+                == search_highlight(post.title, @q)
+              p.tags-field
+                i.fa.fa-calendar
+                span
+                  = format_date(post.created_at)
+                i.fa.fa-tags
+                span
+                  = post.labels_content
+                i.fa.fa-eye
+                span
+                  = post.visited_count
+                i.fa.fa-heart
+                span
+                  = post.liked_count
+        - else
+          .no-results
+            p.text-muted = t('archive.no_results')
+            
+      = paginate @posts, params: { q: @q, time_filter: @time_filter, label_ids: @selected_label_ids }
