@@ -66,6 +66,12 @@ en:
 
   archive:
     search: 'Search'
+    filter_by_label: 'Filter by Label'
+    search_button: 'Search'
+    search_results_for: 'Search results for:'
+    and_label: 'and label'
+    filtered_by_label: 'Filtered by label:'
+    results: 'results'
 
   admin:
     new_post: 'New Post'

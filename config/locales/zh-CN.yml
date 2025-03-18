@@ -80,6 +80,12 @@ zh-CN:
 
   archive:
     search: '搜索博客标题'
+    filter_by_label: '按标签筛选'
+    search_button: '搜索'
+    search_results_for: '搜索结果：'
+    and_label: '和标签'
+    filtered_by_label: '按标签筛选：'
+    results: '条结果'
 
   admin:
     new_post: '新建博客'
