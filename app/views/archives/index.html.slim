@@ -8,6 +8,22 @@
           = form_with url: archives_path, method: 'GET' do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+              .label-select-wrapper.mt-2
+                = f.select :label_id, @labels.map { |label| [label.name, label.id] }, 
+                  { include_blank: t('archive.filter_by_label', default: 'Filter by label') },
+                  { class: 'form-control', selected: @label_id }
+            .form-group.mt-2
+              = f.submit t('archive.search_button', default: 'Search'), class: 'btn btn-primary'
+        - if @q.present? || @label_id.present?
+          .search-result-wrapper
+            p.text-muted
+              - if @q.present? && @label_id.present?
+                = "#{t('archive.search_results_for', default: 'Results for')}: \"#{@q}\" #{t('archive.and_label', default: 'and label')} \"#{@labels.find_by(id: @label_id)&.name}\""
+              - elsif @q.present?
+                = "#{t('archive.search_results_for', default: 'Results for')}: \"#{@q}\""
+              - elsif @label_id.present?
+                = "#{t('archive.filtered_by_label', default: 'Filtered by label')}: \"#{@labels.find_by(id: @label_id)&.name}\""
+              = " (#{@q_size || 0} #{t('archive.results', default: 'results')})"
         - @posts.each do |post|
           li
             = link_to blog_path(post), class: 'blog-title' do
@@ -25,7 +41,4 @@
               i.fa.fa-heart
               span
                 = post.liked_count
-        - if @q.present?
-          .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+      = paginate @posts, params: { q: @q, label_id: @label_id }
