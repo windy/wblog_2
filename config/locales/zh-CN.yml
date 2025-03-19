@@ -80,6 +80,15 @@ zh-CN:
 
   archive:
     search: '搜索博客标题'
+    label: '标签'
+    time_range: '时间范围'
+    all_labels: '所有标签'
+    all_time: '所有时间'
+    last_three_days: '最近三天'
+    last_month: '最近一个月'
+    search_button: '搜索'
+    clear_filters: '清除筛选'
+    search_results: '共 %{count} 条结果'
 
   admin:
     new_post: '新建博客'

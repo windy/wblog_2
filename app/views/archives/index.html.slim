@@ -8,6 +8,20 @@
           = form_with url: archives_path, method: 'GET' do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+            .form-row.mb-3
+              .col-md-6
+                .form-group
+                  = f.label :label_id, t('archive.label')
+                  = f.select :label_id, options_from_collection_for_select(@labels, :id, :name, @label_id), { include_blank: t('archive.all_labels') }, class: 'form-control'
+              .col-md-6
+                .form-group
+                  = f.label :time_filter, t('archive.time_range')
+                  = f.select :time_filter, [[t('archive.all_time'), ''], [t('archive.last_three_days'), 'three_days'], [t('archive.last_month'), 'one_month']], 
+                    { selected: @time_filter }, class: 'form-control'
+            .form-group
+              = f.submit t('archive.search_button'), class: 'btn btn-primary'
+            - if @q.present? || @label_id.present? || @time_filter.present?
+              = link_to t('archive.clear_filters'), archives_path, class: 'btn btn-link'
         - @posts.each do |post|
           li
             = link_to blog_path(post), class: 'blog-title' do
@@ -15,7 +29,7 @@
             p.tags-field
               i.fa.fa-calendar
               span
-                = format_date(post.created_at)
+                = format_datetime(post.created_at)
               i.fa.fa-eye
               span
                 = post.labels_content
@@ -27,5 +41,5 @@
                 = post.liked_count
         - if @q.present?
           .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+            p.text-muted = t('archive.search_results', count: @q_size || 0)
+      = paginate @posts, q: @q, label_id: @label_id, time_filter: @time_filter
