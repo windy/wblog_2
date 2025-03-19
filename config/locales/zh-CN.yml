@@ -80,6 +80,20 @@ zh-CN:
 
   archive:
     search: '搜索博客标题'
+    filter_by_time: '按时间筛选'
+    filter_by_label: '按标签筛选'
+    last_month: '最近一个月'
+    last_half_year: '最近半年'
+    last_three_years: '最近三年'
+    all_time: '所有时间'
+    month: '最近一个月'
+    half_year: '最近半年'
+    three_years: '最近三年'
+    all_labels: '所有标签'
+    filtered_by_keyword: '关键词: %{keyword}'
+    filtered_by_time: '时间: %{range}'
+    filtered_by_label: '标签: %{label}'
+    result_count: '共 %{count} 条结果'
 
   admin:
     new_post: '新建博客'

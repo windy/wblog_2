@@ -5,9 +5,34 @@
     .col-sm-12.col-lg-9
       ul.archives-field
         .search-wrapper
-          = form_with url: archives_path, method: 'GET' do |f|
+          = form_with url: archives_path, method: 'GET', id: 'archives-filter-form' do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+            
+            .form-group.time-range-filter
+              .filter-label = t('archive.filter_by_time')
+              .btn-group
+                = hidden_field_tag :time_range, params[:time_range], id: 'time_range_input'
+                button.btn.btn-outline-secondary.archives-time-range-selector class=("active" if params[:time_range] == "month") data-value="month" = t('archive.last_month')
+                button.btn.btn-outline-secondary.archives-time-range-selector class=("active" if params[:time_range] == "half_year") data-value="half_year" = t('archive.last_half_year')
+                button.btn.btn-outline-secondary.archives-time-range-selector class=("active" if params[:time_range] == "three_years") data-value="three_years" = t('archive.last_three_years')
+                button.btn.btn-outline-secondary.archives-time-range-selector class=("active" if params[:time_range].blank?) data-value="" = t('archive.all_time')
+            
+            .form-group.label-filter
+              .filter-label = t('archive.filter_by_label')
+              = f.select :label_id, @labels.map { |l| [l.name, l.id] }, { include_blank: t('archive.all_labels'), selected: params[:label_id] }, { class: 'form-control', id: 'archives-label-selector' }
+            
+        - if @filtered
+          .filter-status
+            - if params[:q].present?
+              .badge.badge-info = t('archive.filtered_by_keyword', keyword: params[:q])
+            - if params[:time_range].present?
+              .badge.badge-info 
+                = t('archive.filtered_by_time', range: t("archive.#{params[:time_range]}"))
+            - if params[:label_id].present? && @selected_label
+              .badge.badge-info
+                = t('archive.filtered_by_label', label: @selected_label.name)
+
         - @posts.each do |post|
           li
             = link_to blog_path(post), class: 'blog-title' do
@@ -25,7 +50,7 @@
               i.fa.fa-heart
               span
                 = post.liked_count
-        - if @q.present?
+        - if @filtered
           .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+            p.text-muted = t('archive.result_count', count: @posts_count || 0)
+      = paginate @posts, params: { q: params[:q], time_range: params[:time_range], label_id: params[:label_id] }

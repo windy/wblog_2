@@ -66,6 +66,20 @@ en:
 
   archive:
     search: 'Search'
+    filter_by_time: 'Filter by Time'
+    filter_by_label: 'Filter by Label'
+    last_month: 'Last Month'
+    last_half_year: 'Last 6 Months'
+    last_three_years: 'Last 3 Years'
+    all_time: 'All Time'
+    month: 'Last Month'
+    half_year: 'Last 6 Months' 
+    three_years: 'Last 3 Years'
+    all_labels: 'All Labels'
+    filtered_by_keyword: 'Keyword: %{keyword}'
+    filtered_by_time: 'Time Range: %{range}'
+    filtered_by_label: 'Label: %{label}'
+    result_count: 'Total %{count} results'
 
   admin:
     new_post: 'New Post'

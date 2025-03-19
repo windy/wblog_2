@@ -63,4 +63,116 @@
     padding-bottom: 0.5rem;
     padding-top: 1rem;
   }
+
+  // Styles for the search form
+  .search-wrapper {
+    margin-bottom: 1.5rem;
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    // Time range filter styles
+    .time-range-filter {
+      margin-top: 0.75rem;
+
+      .filter-label {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .btn-group {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .btn {
+          flex: 1;
+          min-width: 80px;
+          border-radius: 4px;
+          font-size: 0.85rem;
+          padding: 0.4rem 0.6rem;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+
+          &.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+
+    // Label filter styles
+    .label-filter {
+      margin-top: 0.75rem;
+      
+      .filter-label {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      select {
+        width: 100%;
+        border-radius: 4px;
+        padding: 0.45rem;
+        border: 1px solid #ccc;
+        font-size: 0.9rem;
+        background-color: #fff;
+        
+        &:focus {
+          border-color: #80bdff;
+          outline: 0;
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+      }
+    }
+  }
+
+  // Filter status badges
+  .filter-status {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .badge {
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: normal;
+      background-color: #e9f5ff;
+      color: #0076d1;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}
+
+// Media queries for responsive design
+@media (max-width: 767px) {
+  .archives-field {
+    .search-wrapper {
+      .time-range-filter {
+        .btn-group {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          
+          .btn {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
 }
