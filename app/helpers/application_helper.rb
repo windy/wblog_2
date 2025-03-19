@@ -52,6 +52,10 @@ module ApplicationHelper
     time.strftime("%Y.%m.%d")
   end
 
+  def format_datetime(time)
+    time.strftime("%Y-%m-%d %H:%M:%S UTC")
+  end
+
   def search_highlight(title, q)
     return title if q.blank?
 
