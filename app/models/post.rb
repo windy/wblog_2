@@ -10,6 +10,35 @@ class Post < ActiveRecord::Base
   validates :content, :presence=>true, :length => { :minimum=> 3 }
 
   scope :votable, -> { where(enable_voting: true) }
+  
+  scope :by_time_range, ->(time_option) {
+    case time_option
+    when '1m'
+      where('created_at >= ?', 1.month.ago)
+    when '3m'
+      where('created_at >= ?', 3.months.ago)
+    when '3y'
+      where('created_at >= ?', 3.years.ago)
+    else
+      all
+    end
+  }
+
+  scope :by_label, ->(label_id) {
+    joins(:labels).where('labels.id = ?', label_id) if label_id.present?
+  }
+
+  scope :by_views, ->(min_views) {
+    where('visited_count >= ?', min_views) if min_views.present?
+  }
+
+  scope :by_likes, ->(min_likes) {
+    if min_likes.present?
+      joins(:likes)
+        .group('posts.id')
+        .having('COUNT(likes.id) >= ?', min_likes)
+    end
+  }
 
   def content_html
     self.class.render_html(self.content)
