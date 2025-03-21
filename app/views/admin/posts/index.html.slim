@@ -10,6 +10,7 @@
         tr
           th #{t('admin.posts_head.title')}
           th #{t('admin.posts_head.summary')}
+          th 投票结果
           th #{t('admin.posts_head.operation')}
       tbody
         - @posts.each do |post|
@@ -24,6 +25,18 @@
               span #{ post.visited_count }
               i.fa.fa-heart
               span #{ post.liked_count }
+            td
+              - if post.enable_voting
+                div
+                  span 总票数: #{post.total_votes}
+                div
+                  span 很棒: #{post.vote_percentage_for('excellent')}%
+                div 
+                  span 一般: #{post.vote_percentage_for('normal')}%
+                div
+                  span 差: #{post.vote_percentage_for('poor')}%
+              - else
+                span 未启用
             td
               = link_to t('comment'), admin_post_comments_path(post.id), class: 'edit-post-link'
               | &nbsp
