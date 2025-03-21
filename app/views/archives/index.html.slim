@@ -5,9 +5,85 @@
     .col-sm-12.col-lg-9
       ul.archives-field
         .search-wrapper
-          = form_with url: archives_path, method: 'GET' do |f|
+          = form_with url: archives_path, method: 'GET', data: { controller: 'archives-filter' } do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+              
+            .filter-section
+              h5.filter-title = t('archive.filters', default: 'Filters')
+              .filter-group
+                label.filter-label = t('archive.time_filter', default: 'Time Range')
+                .filter-options
+                  .form-check.form-check-inline
+                    = f.radio_button :time_option, '1m', checked: @time_option == '1m', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :time_option_1m, t('archive.last_month', default: 'Last Month'), class: 'form-check-label'
+                  .form-check.form-check-inline
+                    = f.radio_button :time_option, '3m', checked: @time_option == '3m', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :time_option_3m, t('archive.last_3_months', default: 'Last 3 Months'), class: 'form-check-label'
+                  .form-check.form-check-inline
+                    = f.radio_button :time_option, '3y', checked: @time_option == '3y', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :time_option_3y, t('archive.last_3_years', default: 'Last 3 Years'), class: 'form-check-label'
+              
+              .filter-group
+                label.filter-label = t('archive.label_filter', default: 'Label')
+                .filter-options
+                  = f.select :label_id, 
+                    options_for_select([['', '']] + @labels.map { |label| [label.name, label.id] }, @label_id), 
+                    {}, 
+                    { class: 'form-select', data: { action: 'change->archives-filter#submit' } }
+              
+              .filter-group
+                label.filter-label = t('archive.views_filter', default: 'Views')
+                .filter-options
+                  .form-check.form-check-inline
+                    = f.radio_button :min_views, '', checked: @min_views.blank?, class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :min_views_, t('archive.any_views', default: 'Any'), class: 'form-check-label'
+                  .form-check.form-check-inline
+                    = f.radio_button :min_views, '100', checked: @min_views == '100', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :min_views_100, "> 100", class: 'form-check-label'
+                  .form-check.form-check-inline
+                    = f.radio_button :min_views, '1000', checked: @min_views == '1000', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :min_views_1000, "> 1000", class: 'form-check-label'
+              
+              .filter-group
+                label.filter-label = t('archive.likes_filter', default: 'Likes')
+                .filter-options
+                  .form-check.form-check-inline
+                    = f.radio_button :min_likes, '', checked: @min_likes.blank?, class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :min_likes_, t('archive.any_likes', default: 'Any'), class: 'form-check-label'
+                  .form-check.form-check-inline
+                    = f.radio_button :min_likes, '5', checked: @min_likes == '5', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :min_likes_5, "> 5", class: 'form-check-label'
+                  .form-check.form-check-inline
+                    = f.radio_button :min_likes, '20', checked: @min_likes == '20', class: 'form-check-input', data: { action: 'change->archives-filter#submit' }
+                    = f.label :min_likes_20, "> 20", class: 'form-check-label'
+            
+            .filter-actions
+              button.btn.btn-primary.btn-sm.me-2 type="submit"
+                = t('archive.apply_filters', default: 'Apply Filters')
+              = link_to t('archive.reset_filters', default: 'Reset Filters'), archives_path, class: 'btn btn-outline-secondary btn-sm'
+            
+            - if @time_option.present? || @label_id.present? || @min_views.present? || @min_likes.present?
+              .active-filters
+                h6 = t('archive.active_filters', default: 'Active Filters:')
+                ul.list-inline
+                  - if @time_option.present?
+                    li.list-inline-item
+                      span.badge.bg-info
+                        = t("archive.time_#{@time_option}", default: @time_option)
+                  - if @label_id.present?
+                    li.list-inline-item
+                      span.badge.bg-info
+                        = Label.find(@label_id).name
+                  - if @min_views.present?
+                    li.list-inline-item
+                      span.badge.bg-info
+                        = "> #{@min_views} #{t('archive.views', default: 'views')}"
+                  - if @min_likes.present?
+                    li.list-inline-item
+                      span.badge.bg-info
+                        = "> #{@min_likes} #{t('archive.likes', default: 'likes')}"
+                  
         - @posts.each do |post|
           li
             = link_to blog_path(post), class: 'blog-title' do
@@ -16,10 +92,10 @@
               i.fa.fa-calendar
               span
                 = format_date(post.created_at)
-              i.fa.fa-eye
+              i.fa.fa-tag
               span
                 = post.labels_content
-              i.fa.fa-torah
+              i.fa.fa-eye
               span
                 = post.visited_count
               i.fa.fa-heart
@@ -27,5 +103,5 @@
                 = post.liked_count
         - if @q.present?
           .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+            p.text-muted = "#{t('archive.search_results', default: 'Results')} #{@q_size || 0}"
+      = paginate @posts, params: { q: @q, time_option: @time_option, label_id: @label_id, min_views: @min_views, min_likes: @min_likes }
