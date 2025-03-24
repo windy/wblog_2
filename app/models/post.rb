@@ -47,11 +47,15 @@ class Post < ActiveRecord::Base
   end
 
   def liked_count
-    self.likes.size
+    self.likes.likes.size
   end
 
-  def liked_by?(like_id)
-    !! self.likes.where(id: like_id).first
+  def unliked_count
+    self.likes.unlikes.size
+  end
+
+  def liked_by?(like_id, kind = 'like')
+    !! self.likes.where(id: like_id, kind: kind).first
   end
 
   def vote_count_for(type)

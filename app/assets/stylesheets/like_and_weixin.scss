@@ -25,3 +25,67 @@
     outline-style: none;
   }
 }
+
+.reaction-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.unlike-button {
+  color: #96a2ea;
+  background-color: transparent;
+  border: 1px solid #8595e7;
+  border-radius: 10rem;
+  padding: 0.5rem 1rem;
+  min-width: 100px;
+  text-align: center;
+
+  &:hover {
+    color: #6276e0;
+    border-color: #6b7de2;
+  }
+  &:focus {
+    outline-style: none;
+  }
+  span {
+    margin-left: 0.23rem;
+  }
+}
+
+.unlike-button.unliked {
+  background-color: #96A2EA;
+  color: #FFF;
+  &:focus {
+    outline-style: none;
+  }
+}
+
+.like-button, .unlike-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  height: 38px;
+  transition: all 0.2s ease;
+  
+  .count {
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .reaction-buttons {
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  
+  .like-button, .unlike-button {
+    min-width: 90px;
+    padding: 0.4rem 0.8rem;
+  }
+}

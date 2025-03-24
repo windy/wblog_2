@@ -9,15 +9,18 @@ p.ptag.published-at
 
 = render 'common/copyright'
 hr.blog-over
-p data-controller='like'
-  button.like-button class="#{'liked' if post.liked_by?(cookies[:like])}" type='button' data-url=blog_likes_path(post) data-like-target='button' data-action='click->like#toggle'
-    span.count #{@likes_count}
+.reaction-buttons data-controller='like'
+  button.like-button class="#{'liked' if post.liked_by?(cookies[:like], 'like')}" type='button' data-url=blog_likes_path(post) data-like-target='likeButton' data-action='click->like#toggleLike'
+    span.count #{post.liked_count}
     span Like
-  .qrcode-controller data-controller='qrcode'
-    .qrcode
-      a#qrcode-link href='#' data-action='click->qrcode#greet'
-        i.fi-link
-        | #{t('qr_code')}
-    .social-share data-qrcode-target='wrapper'
-      .qrcode-wrapper
-        = render partial: "qrcode", locals: { str: blog_url(post) }
+  button.unlike-button class="#{'unliked' if post.liked_by?(cookies[:unlike], 'unlike')}" type='button' data-url=blog_likes_path(post) data-like-target='unlikeButton' data-action='click->like#toggleUnlike'
+    span.count #{post.unliked_count}
+    span Unlike
+.qrcode-controller data-controller='qrcode'
+  .qrcode
+    a#qrcode-link href='#' data-action='click->qrcode#greet'
+      i.fi-link
+      | #{t('qr_code')}
+  .social-share data-qrcode-target='wrapper'
+    .qrcode-wrapper
+      = render partial: "qrcode", locals: { str: blog_url(post) }
