@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     resources :all_comments, only: [:index, :destroy]
     resources :labels
-
+    resources :spam_words
 
     root to: 'dashboard#index'
   end

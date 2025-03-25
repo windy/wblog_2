@@ -1,0 +1,9 @@
+.row
+  .col-sm-8
+    = simple_form_for([:admin, @spam_word], html: {novalidate: '' }) do |f|
+      = f.input :word, label: '广告词', placeholder: '输入需要过滤的广告词'
+      = f.input :replacement, label: '替换内容', placeholder: '默认为**', hint: '留空将使用默认替换字符**'
+      = f.input :active, label: '是否激活', as: :boolean, wrapper: :vertical_boolean
+      .form-group
+        = f.button :submit, class: 'btn btn-primary'
+        = link_to '返回', admin_spam_words_path, class: 'btn btn-secondary ml-2'

@@ -1,0 +1,33 @@
+.card
+  .card-header
+    .float-sm-left
+      h3.card-title 广告词管理
+    .float-sm-right
+      = link_to '创建广告词', new_admin_spam_word_path
+  .card-body
+    table.table.table-hover
+      thead
+        tr
+          th ID
+          th 广告词
+          th 替换内容
+          th 激活状态
+          th 创建时间
+          th 操作
+      tbody
+        - @spam_words.each do |spam_word|
+          tr
+            td = spam_word.id
+            td = spam_word.word
+            td = spam_word.replacement
+            td = spam_word.active ? '是' : '否'
+            td = format_time(spam_word.created_at)
+            td
+              = link_to '编辑', edit_admin_spam_word_path(spam_word)
+              | &nbsp
+              = link_to '删除', admin_spam_word_path(spam_word), method: 'DELETE', 'data-confirm' => '确认删除?'
+  .card-footer
+    .float-sm-left
+      | 总计: #{@spam_words.count}
+    .float-sm-right
+      = paginate @spam_words if @spam_words.respond_to?(:total_pages)
