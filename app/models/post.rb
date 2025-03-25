@@ -2,6 +2,7 @@ require 'markdown'
 class Post < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :labels
+  has_one_attached :cover_image
 
   has_many :likes
   has_many :votes, dependent: :destroy

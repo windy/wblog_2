@@ -1,0 +1,148 @@
+/* Cover Image styles for blog posts */
+
+/* Common cover image styles */
+.cover-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog detail page cover image */
+.blogs-show-page {
+  .blog-cover-image {
+    margin-bottom: 1.5rem;
+    
+    img.cover-image {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: scale(1.01);
+      }
+    }
+  }
+}
+
+/* Blog list page cover image */
+.home-index-page {
+  .blog-item {
+    display: flex;
+    flex-direction: column;
+    
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+    
+    .blog-content {
+      flex: 1;
+    }
+  }
+  
+  /* Added styles for home page cover images */
+  .blog-cover-image {
+    margin-bottom: 1.5rem;
+    
+    img.cover-image {
+      width: 100%;
+      max-height: 350px;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  
+  /* Style for cover thumbnail in post listings */
+  .blog-cover-thumbnail {
+    margin-top: 1rem;
+    
+    @media screen and (min-width: 768px) {
+      margin-top: 0;
+      margin-left: 1.5rem;
+      width: 200px;
+      flex-shrink: 0;
+    }
+    
+    @media screen and (min-width: 992px) {
+      width: 250px;
+    }
+    
+    img.cover-image {
+      height: 150px;
+      width: 100%;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+/* Archive page cover image */
+.archives-index-page {
+  .archive-cover-thumbnail {
+    margin-left: 1rem;
+    display: none;
+    
+    @media screen and (min-width: 768px) {
+      display: block;
+      width: 120px;
+      
+      img.cover-image {
+        height: 80px;
+        object-fit: cover;
+      }
+    }
+  }
+  
+  .archive-item {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .cover-image {
+    max-height: 300px;
+  }
+  
+  .blogs-show-page {
+    .blog-cover-image {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .home-index-page {
+    .blog-cover-image {
+      margin-bottom: 1rem;
+    }
+    
+    .blog-cover-thumbnail img.cover-image {
+      height: 120px;
+    }
+  }
+}
+
+/* Admin preview of cover image */
+.admin-posts-page {
+  .cover-image-preview {
+    max-width: 300px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    padding: 3px;
+  }
+}

@@ -57,4 +57,36 @@ module ApplicationHelper
 
     title.sub(q, "<em>#{q}</em>")
   end
+  
+  # Returns the cover image for a post, or a default image if none is attached
+  # @param post [Post] the post to get the cover image for
+  # @param size [Symbol, Hash] optional variant size (e.g. :medium) or dimensions hash (e.g. { resize_to_limit: [300, 300] })
+  # @return [ActiveStorage::Variant, String] the image path or variant
+  def post_cover_image(post, size = nil)
+    if post.cover_image.attached?
+      if size.present?
+        if size.is_a?(Symbol)
+          # Predefined sizes
+          case size
+          when :small
+            post.cover_image.variant(resize_to_limit: [300, 200])
+          when :medium
+            post.cover_image.variant(resize_to_limit: [600, 400])
+          when :large
+            post.cover_image.variant(resize_to_limit: [1200, 800])
+          else
+            post.cover_image
+          end
+        else
+          # Custom variant options
+          post.cover_image.variant(size)
+        end
+      else
+        post.cover_image
+      end
+    else
+      # Return default cover image
+      'default_cover.jpg'
+    end
+  end
 end
