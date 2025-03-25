@@ -5,4 +5,4 @@
 # Command to run when "Run" button clicked
 run_command: bin/dev
 # Command to install or update dependencies, will execute each time a new thread created to ensure dependencies up-to-date
-dependency_command: bundle install && yarn install && rails db:migrate
+dependency_command: gem install bundler && bundle install && yarn install
