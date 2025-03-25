@@ -1,6 +1,6 @@
 - content_for(:title) do
   | #{t('title.timeline')}
-.container
+.container.archives-index-page
   .row.justify-content-center
     .col-sm-12.col-lg-9
       ul.archives-field
@@ -9,22 +9,26 @@
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
         - @posts.each do |post|
-          li
-            = link_to blog_path(post), class: 'blog-title' do
-              == search_highlight(post.title, @q)
-            p.tags-field
-              i.fa.fa-calendar
-              span
-                = format_date(post.created_at)
-              i.fa.fa-eye
-              span
-                = post.labels_content
-              i.fa.fa-torah
-              span
-                = post.visited_count
-              i.fa.fa-heart
-              span
-                = post.liked_count
+          li.archive-item
+            .archive-content
+              = link_to blog_path(post), class: 'blog-title' do
+                == search_highlight(post.title, @q)
+              p.tags-field
+                i.fa.fa-calendar
+                span
+                  = format_date(post.created_at)
+                i.fa.fa-eye
+                span
+                  = post.labels_content
+                i.fa.fa-torah
+                span
+                  = post.visited_count
+                i.fa.fa-heart
+                span
+                  = post.liked_count
+            .archive-cover-thumbnail
+              = link_to blog_path(post) do
+                = image_tag post_cover_image(post, :small), class: 'cover-image', alt: post.title
         - if @q.present?
           .search-result-wrapper
             p.text-muted 共 #{@q_size || 0} 条结果

@@ -1,4 +1,7 @@
 / require: locals: { post : post }
+- if post.cover_image.attached?
+  .blog-cover-image
+    = image_tag post.cover_image, class: 'img-fluid cover-image'
 h2.blog-title #{post.title}
 p.ptag
   span.fa.fa-list

@@ -1,9 +1,17 @@
 .row data-controller='admin-label'
   .col-sm-8
-    = simple_form_for([:admin, @post], html: {novalidate: '' }) do |f|
+    = simple_form_for([:admin, @post], html: {novalidate: '', multipart: true }) do |f|
       = f.input :title, label: t('admin.posts_attributes.title')
       = f.association :labels, input_html: { data: { 'admin-label-target': 'label', 'labels-data': Label.all.map(&:name) } }, label: t('admin.posts_attributes.labels')
       = f.input :enable_voting, as: :boolean, boolean_style: :inline, label: t('admin.posts_attributes.enable_voting', default: 'Enable voting on this post')
+      
+      .form-group
+        = f.label :cover_image, t('admin.posts_attributes.cover_image', default: 'Cover Image')
+        - if f.object.cover_image.attached?
+          .mb-3
+            = image_tag f.object.cover_image, class: 'img-thumbnail', style: 'max-height: 200px'
+        = f.file_field :cover_image, class: 'form-control-file'
+        small.form-text.text-muted = t('admin.posts_attributes.cover_image_hint', default: 'Upload an image for the post cover. Recommended size: 1200x630px.')
 
       / tabs and upload file field
       ul.nav.nav-tabs#tabs

@@ -52,6 +52,6 @@ class Admin::PostsController < Admin::BaseController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :enable_voting, label_ids: [])
+    params.require(:post).permit(:title, :content, :enable_voting, :cover_image, label_ids: [])
   end
 end
