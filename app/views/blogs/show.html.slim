@@ -4,10 +4,16 @@
 
 - content_for(:title) do
   | #{@post.title}
-/ data-url=refresh_blog_comments_path(@post) data-post_id=@post.id
-.container.blog-wrapper
+
+.container.blog-wrapper data-controller="toc"
   .row.justify-content-center
-    .col-xs-12.col-lg-9
+    .col-lg-3.d-none.d-lg-block
+      .blog-toc
+        .toc-header
+          h4 目录
+        .toc-body
+          ul.toc-list data-toc-target="list"
+    .col-xs-12.col-lg-9 data-toc-target="content"
       = render partial: "post", :locals=> { post: @post }
 
   = render partial: 'vote', locals: { post: @post }

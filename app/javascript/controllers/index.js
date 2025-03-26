@@ -16,3 +16,6 @@ application.register("admin-label", AdminLabelController)
 
 import VoteController from "./vote_controller"
 application.register("vote", VoteController)
+
+import TocController from "./toc_controller"
+application.register("toc", TocController)
