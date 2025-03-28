@@ -11,6 +11,26 @@ class Post < ActiveRecord::Base
   validates :content, :presence=>true, :length => { :minimum=> 3 }
 
   scope :votable, -> { where(enable_voting: true) }
+  
+  # Sorting scopes
+  scope :by_newest, -> { order(created_at: :desc) }
+  scope :by_oldest, -> { order(created_at: :asc) }
+  scope :by_most_liked, -> { order(liked_count: :desc) }
+  scope :by_most_visited, -> { order(visited_count: :desc) }
+  
+  # Chainable sorting scope
+  scope :sorted_by, ->(sort_by, direction) {
+    case sort_by
+    when 'created_at'
+      order(created_at: direction.to_sym)
+    when 'liked_count'
+      order(liked_count: direction.to_sym)
+    when 'visited_count'
+      order(visited_count: direction.to_sym)
+    else
+      order(created_at: :desc)
+    end
+  }
 
   def content_html
     self.class.render_html(self.content)
@@ -22,8 +42,9 @@ class Post < ActiveRecord::Base
     md.render(content)
   end
 
+  # Update visited count
   def visited
-    self.visited_count += 1
+    self.visited_count = self.visited_count.to_i + 1
     self.save
     self.visited_count
   end
