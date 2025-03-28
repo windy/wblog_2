@@ -8,6 +8,18 @@
           = form_with url: archives_path, method: 'GET' do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+            .form-row.mt-2.mb-3
+              .col-md-6
+                .form-group
+                  label.mr-2 for="sort_options" = t('archive.sort_by')
+                  select.form-control name="sort_by"
+                    option value="created_at" selected=(@sort_by == 'created_at' && @direction == 'desc') = t('archive.sort_newest')
+                    option value="created_at" selected=(@sort_by == 'created_at' && @direction == 'asc') data-direction="asc" = t('archive.sort_oldest')
+                    option value="liked_count" selected=(@sort_by == 'liked_count') = t('archive.sort_most_liked')
+                    option value="visited_count" selected=(@sort_by == 'visited_count') = t('archive.sort_most_read')
+                  = hidden_field_tag :direction, @direction
+              .col-md-6.d-flex.align-items-end.justify-content-end
+                = f.submit t('archive.apply_sort'), class: 'btn btn-primary'
         - @posts.each do |post|
           li.archive-item
             .archive-content
@@ -32,4 +44,16 @@
         - if @q.present?
           .search-result-wrapper
             p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+      = paginate @posts, q: @q, sort_by: @sort_by, direction: @direction
+
+javascript:
+  document.addEventListener('DOMContentLoaded', function() {
+    const sortSelect = document.querySelector('select[name="sort_by"]');
+    const directionInput = document.querySelector('input[name="direction"]');
+    
+    sortSelect.addEventListener('change', function() {
+      const selectedOption = this.options[this.selectedIndex];
+      const direction = selectedOption.dataset.direction || 'desc';
+      directionInput.value = direction;
+    });
+  });
