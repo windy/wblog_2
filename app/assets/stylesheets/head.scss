@@ -10,4 +10,14 @@
     padding-right: 0.75rem !important;
     padding-left: 0.75rem !important;
   }
+
+  .nav-link .fa-rss {
+    color: #f26522;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover .fa-rss {
+    color: #ff8c5a;
+  }
 }

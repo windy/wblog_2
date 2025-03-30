@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :archives, only: [:index]
   resources :photos, only: [:create]
+  resources :feeds, only: [:index]
+  get '/feed', to: 'feeds#index', format: 'rss'
 
   get '/about', to: 'home#about'
 

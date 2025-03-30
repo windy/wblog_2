@@ -38,6 +38,9 @@ html
             li class="nav-item"
               = link_to '关于', about_path, class: 'nav-link'
             li class="nav-item"
+              = link_to feed_path(format: 'rss'), class: 'nav-link', title: t('subscribes.rss'), target: '_blank' do
+                .fa.fa-rss
+            li class="nav-item"
               a class="nav-link" href=archives_path
                 .fa.fa-search
       main
