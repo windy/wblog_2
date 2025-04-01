@@ -16,3 +16,6 @@ application.register("admin-label", AdminLabelController)
 
 import VoteController from "./vote_controller"
 application.register("vote", VoteController)
+
+import ShareController from "./share_controller"
+application.register("share", ShareController)

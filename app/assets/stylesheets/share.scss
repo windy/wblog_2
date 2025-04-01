@@ -1,0 +1,97 @@
+.share-container {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.share-buttons-wrapper {
+  display: inline-flex;
+  
+  .share-button {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid;
+    margin-right: 5px;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline-style: none;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+    
+    span {
+      margin-left: 0.23rem;
+    }
+    
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  .facebook {
+    background-color: #3b5998;
+    border-color: #3b5998;
+    
+    &:hover {
+      background-color: darken(#3b5998, 10%);
+      border-color: darken(#3b5998, 10%);
+      color: #fff;
+    }
+  }
+
+  .twitter {
+    background-color: #1DA1F2;
+    border-color: #1DA1F2;
+    
+    &:hover {
+      background-color: darken(#1DA1F2, 10%);
+      border-color: darken(#1DA1F2, 10%);
+      color: #fff;
+    }
+  }
+}
+
+// Responsive styles for mobile
+@media (max-width: 768px) {
+  .share-container {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .share-buttons-wrapper {
+    display: flex;
+    
+    .share-button {
+      flex: 1;
+      justify-content: center;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      
+      i {
+        font-size: 0.9rem;
+      }
+      
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+// Ensure proper layout in smaller screens
+@media (max-width: 576px) {
+  .share-buttons-wrapper {
+    width: 100%;
+    
+    .share-button {
+      padding: 0.3rem 0.6rem;
+    }
+  }
+}

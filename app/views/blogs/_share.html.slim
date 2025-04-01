@@ -1,0 +1,8 @@
+.share-container data-controller="share" data-share-title-value=post.title data-share-url-value=blog_url(post)
+  .share-buttons-wrapper
+    a.share-button.facebook href="#" data-action="click->share#shareFacebook"
+      i.fa.fa-facebook
+      span #{t('share.facebook', default: 'Share on Facebook')}
+    a.share-button.twitter href="#" data-action="click->share#shareTwitter"
+      i.fa.fa-twitter
+      span #{t('share.twitter', default: 'Share on Twitter')}
