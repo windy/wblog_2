@@ -8,6 +8,16 @@
           = form_with url: archives_path, method: 'GET' do |f|
             .form-group
               = f.search_field :q, value: @q, placeholder: t('archive.search'), class: 'form-control'
+            .filter-options.d-flex.flex-wrap.mt-3
+              .form-group.me-3
+                label.me-2 = t('archive.period_filter')
+                = f.select :period, options_for_select({t('archive.period_options.all') => '', t('archive.period_options.1_month') => '1_month', t('archive.period_options.3_months') => '3_months', t('archive.period_options.1_year') => '1_year', t('archive.period_options.3_years') => '3_years'}, @period), {}, class: 'form-select'
+              .form-group.me-3
+                label.me-2 = t('archive.likes_count_filter')
+                = f.select :likes_count, options_for_select({t('archive.likes_count_options.all') => '', t('archive.likes_count_options.10') => '10', t('archive.likes_count_options.50') => '50', t('archive.likes_count_options.100') => '100'}, @likes_count), {}, class: 'form-select'
+              .form-group
+                = f.submit t('archive.filter_apply'), class: 'btn btn-primary'
+                = link_to t('archive.filter_reset'), archives_path, class: 'btn btn-outline-secondary ms-2'
         - @posts.each do |post|
           li.archive-item
             .archive-content
@@ -29,7 +39,7 @@
             .archive-cover-thumbnail
               = link_to blog_path(post) do
                 = image_tag post_cover_image(post, :small), class: 'cover-image', alt: post.title
-        - if @q.present?
+        - if @q.present? || @period.present? || @likes_count.present?
           .search-result-wrapper
-            p.text-muted 共 #{@q_size || 0} 条结果
-      = paginate @posts, q: @q
+            p.text-muted = t('archive.search_results') + ": #{@q_size || @posts.total_count || 0}"
+      = paginate @posts, q: @q, period: @period, likes_count: @likes_count

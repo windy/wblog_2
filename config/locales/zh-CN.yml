@@ -80,6 +80,22 @@ zh-CN:
 
   archive:
     search: '搜索博客标题'
+    period_filter: '时间过滤'
+    period_options:
+      all: '不限时间'
+      1_month: '一个月内'
+      3_months: '三个月内'
+      1_year: '一年内'
+      3_years: '三年内'
+    likes_count_filter: '点赞量过滤'
+    likes_count_options:
+      all: '不限点赞'
+      10: '大于10'
+      50: '大于50'
+      100: '大于100'
+    filter_apply: '应用过滤'
+    filter_reset: '重置'
+    search_results: '搜索结果'
 
   admin:
     new_post: '新建博客'

@@ -66,6 +66,22 @@ en:
 
   archive:
     search: 'Search'
+    period_filter: 'Time Filter'
+    period_options:
+      all: 'All Time'
+      1_month: '1 Month'
+      3_months: '3 Months'
+      1_year: '1 Year'
+      3_years: '3 Years'
+    likes_count_filter: 'Likes Filter'
+    likes_count_options:
+      all: 'All Likes'
+      10: 'More than 10'
+      50: 'More than 50'
+      100: 'More than 100'
+    filter_apply: 'Apply Filter'
+    filter_reset: 'Reset'
+    search_results: 'Search Results'
 
   admin:
     new_post: 'New Post'

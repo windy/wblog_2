@@ -11,6 +11,40 @@ class Post < ActiveRecord::Base
   validates :content, :presence=>true, :length => { :minimum=> 3 }
 
   scope :votable, -> { where(enable_voting: true) }
+  
+  # 按时间段过滤文章
+  scope :by_period, ->(period) {
+    return all if period.blank?
+    
+    case period
+    when "1_month"
+      where('posts.created_at >= ?', 1.month.ago)
+    when "3_months"
+      where('posts.created_at >= ?', 3.months.ago)
+    when "1_year"
+      where('posts.created_at >= ?', 1.year.ago)
+    when "3_years"
+      where('posts.created_at >= ?', 3.years.ago)
+    else
+      all
+    end
+  }
+  
+  # 按点赞数量过滤文章
+  scope :by_likes_count, ->(count) {
+    return all if count.blank?
+    
+    case count
+    when "10"
+      joins(:likes).group('posts.id').having('COUNT(likes.id) > 10')
+    when "50"
+      joins(:likes).group('posts.id').having('COUNT(likes.id) > 50')
+    when "100"
+      joins(:likes).group('posts.id').having('COUNT(likes.id) > 100')
+    else
+      all
+    end
+  }
 
   def content_html
     self.class.render_html(self.content)
