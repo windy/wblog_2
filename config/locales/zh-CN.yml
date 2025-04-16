@@ -38,11 +38,13 @@ zh-CN:
     creator: '创业'
     timeline: '时间线'
     about: '关于我'
+    changelog: '更新日志'
 
   title:
     home: '首页'
     timeline: '时间线'
     about: '关于我'
+    changelog: '更新日志'
 
 
   activerecord:
@@ -98,6 +100,13 @@ zh-CN:
       operation: '操作'
       reply: '回复'
       destroy: '删除'
+    
+    changelogs: '更新日志管理'
+    changelogs_head:
+      date: '日期'
+      title: '标题'
+      content: '内容'
+      operation: '操作'
 
     subscribes: '订阅管理'
     subscribes_head:

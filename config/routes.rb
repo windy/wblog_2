@@ -22,10 +22,12 @@ Rails.application.routes.draw do
 
   resources :archives, only: [:index]
   resources :photos, only: [:create]
+  resources :changelogs, only: [:index]
 
   get '/about', to: 'home#about'
 
   namespace :admin do
+    resources :changelogs
     get 'login', to: 'sessions#new', as: :login
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy', as: :logout
@@ -40,7 +42,6 @@ Rails.application.routes.draw do
 
     resources :all_comments, only: [:index, :destroy]
     resources :labels
-
 
     root to: 'dashboard#index'
   end

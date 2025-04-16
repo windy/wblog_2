@@ -1,0 +1,7 @@
+.row
+  .col-sm-8
+    = simple_form_for([:admin, @changelog], html: {novalidate: '' }) do |f|
+      = f.input :date, as: :date, label: '日期'
+      = f.input :title, label: '标题'
+      = f.input :content, as: :text, label: '内容', input_html: { rows: 10 }
+      = f.button :submit

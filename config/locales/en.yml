@@ -38,11 +38,13 @@ en:
     creator: 'Startup'
     timeline: 'Timeline'
     about: 'About'
+    changelog: 'Changelog'
 
   title:
     home: 'Home'
     timeline: 'Timeline'
     about: 'About Me'
+    changelog: 'Changelog'
 
   comment_attributes:
     email: 'Format Validation Failed'
@@ -84,6 +86,13 @@ en:
       operation: 'Operation'
       reply: 'Reply'
       destroy: 'Destroy'
+    
+    changelogs: 'Manage Changelog'
+    changelogs_head:
+      date: 'Date'
+      title: 'Title'
+      content: 'Content'
+      operation: 'Operation'
 
     subscribes: 'Manage Subscribes'
     subscribes_head:

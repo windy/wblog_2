@@ -1,0 +1,26 @@
+.card
+  .card-header
+    .float-sm-left
+      h3.card-title #{t('admin.changelogs')}
+    .float-sm-right
+      = link_to '创建更新日志', new_admin_changelog_path
+  .card-body
+    table.table.table-hover
+      thead
+        tr
+          th #{t('admin.changelogs_head.date')}
+          th #{t('admin.changelogs_head.title')}
+          th #{t('admin.changelogs_head.content')}
+          th #{t('admin.changelogs_head.operation')}
+      tbody
+        - @changelogs.each do |changelog|
+          tr
+            td = format_date(changelog.date)
+            td = changelog.title
+            td = truncate(changelog.content, length: 100)
+            td
+              = link_to t('edit'), edit_admin_changelog_path(changelog), class: 'edit-post-link'
+              | &nbsp
+              = link_to t('destroy'), admin_changelog_path(changelog), method: 'DELETE', 'data-confirm' => '确认删除?'
+  .card-footer
+    = paginate @changelogs

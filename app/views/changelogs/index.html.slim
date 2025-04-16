@@ -1,0 +1,17 @@
+- content_for(:title) do
+  | #{t('title.changelog')}
+.container
+  .row.justify-content-center
+    .col-sm-12.col-lg-9
+      h1.text-center #{t('head.changelog')}
+      .changelog-field
+        .timeline
+          - @changelogs.each do |changelog|
+            .changelog-item
+              .changelog-date
+                = format_date(changelog.date)
+              .changelog-title
+                = changelog.title
+              .changelog-content
+                = simple_format(changelog.content)
+      = paginate @changelogs
