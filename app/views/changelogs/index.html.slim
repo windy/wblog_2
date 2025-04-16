@@ -3,7 +3,7 @@
 .container
   .row.justify-content-center
     .col-sm-12.col-lg-9
-      h1.text-center #{t('head.changelog')}
+      h1.text-center.changelog-page-title #{t('head.changelog')}
       .changelog-field
         .timeline
           - @changelogs.each do |changelog|
