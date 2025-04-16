@@ -1,0 +1,35 @@
+.container-fluid
+  .row
+    .col-12
+      .card
+        .card-header
+          h3.card-title 更新日志管理
+          .card-tools
+            = link_to new_admin_changelog_path, class: 'btn btn-primary btn-sm' do
+              i.fas.fa-plus
+              |  添加
+        .card-body.p-0
+          table.table.table-striped
+            thead
+              tr
+                th 日期
+                th 分类
+                th 内容预览
+                th 操作
+            tbody
+              - if @changelogs.empty?
+                tr
+                  td colspan="4" 暂无数据
+              - else
+                - @changelogs.each do |changelog|
+                  tr
+                    td = changelog.date
+                    td = changelog.category
+                    td = truncate(changelog.content, length: 100)
+                    td
+                      = link_to edit_admin_changelog_path(changelog), class: 'btn btn-info btn-sm mr-1' do
+                        i.fas.fa-edit
+                      = link_to admin_changelog_path(changelog), method: :delete, data: { turbo_method: :delete, turbo_confirm: '确定要删除吗？' }, class: 'btn btn-danger btn-sm' do
+                        i.fas.fa-trash-alt
+        .card-footer.clearfix
+          = paginate @changelogs

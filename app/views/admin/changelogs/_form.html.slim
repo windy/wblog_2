@@ -1,0 +1,18 @@
+= form_with model: [:admin, @changelog], local: true do |f|
+  .card-body
+    .form-group
+      = f.label :date, "日期"
+      = f.date_field :date, class: 'form-control', required: true
+
+    .form-group
+      = f.label :category, "分类"
+      = f.text_field :category, class: 'form-control', required: true, placeholder: "例如：功能增强"
+
+    .form-group
+      = f.label :content, "内容"
+      = f.text_area :content, class: 'form-control', rows: 10, required: true, placeholder: "请使用 Markdown 格式，例如：\n* 新增功能一\n* 优化功能二"
+      small.form-text.text-muted 使用 Markdown 格式的列表（每行以 * 开头）
+
+  .card-footer
+    = f.submit "保存", class: 'btn btn-primary'
+    = link_to "取消", admin_changelogs_path, class: 'btn btn-default ml-2'
