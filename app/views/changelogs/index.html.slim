@@ -1,0 +1,19 @@
+.container
+  .row.mt-4.mb-4
+    .col-12
+      h1.text-center 更新日志
+  
+  .row
+    .col-12
+      .timeline
+        - @changelogs.each do |changelog|
+          .timeline-item
+            .timeline-date
+              .timeline-dot
+              .timeline-line
+              span.date = changelog.date.strftime("%b %d, %Y")
+            
+            .timeline-content
+              h3.timeline-category = changelog.category
+              .timeline-details
+                == Changelog.markdown_to_html(changelog.content)
