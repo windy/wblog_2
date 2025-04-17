@@ -31,3 +31,9 @@ aside.app-sidebar.bg-body-secondary.shadow data-bs-theme="dark"
           = link_to admin_labels_path, class: "nav-link #{admin_active_for(admin_labels_path, current_path)}" do
             i.nav-icon.fas.fa-list
             span 标签管理
+            
+        li.nav-header 更新日志
+        li.nav-item
+          = link_to admin_changelogs_path, class: "nav-link #{admin_active_for(admin_changelogs_path, current_path)}" do
+            i.nav-icon.fas.fa-clipboard-list
+            span 更新日志管理

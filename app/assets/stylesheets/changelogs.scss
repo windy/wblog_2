@@ -1,0 +1,90 @@
+// Changelog styles
+
+.changelog-entry {
+  position: relative;
+  padding-left: 30px;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #e0e0e0;
+  }
+  
+  &:last-child:before {
+    bottom: 50%;
+  }
+}
+
+.version-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.changelog-section {
+  position: relative;
+  
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .feature-heading {
+    color: #28a745;
+  }
+  
+  .improvement-heading {
+    color: #17a2b8;
+  }
+  
+  .bugfix-heading {
+    color: #ffc107;
+  }
+}
+
+.changelog-list {
+  list-style-type: none;
+  padding-left: 0;
+  
+  li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 1rem;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #007bff;
+    }
+  }
+}
+
+.changelog-item {
+  p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+}
+
+.changelog-description {
+  color: #666;
+  font-size: 0.95rem;
+  
+  p {
+    font-weight: normal;
+  }
+}

@@ -1,0 +1,169 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Changelog</h1>
+  
+  <% if @rolling_changelog %>
+    <div class="changelog-entry mb-5">
+      <div class="d-flex align-items-center mb-3">
+        <div class="version-badge me-3">
+          <%= @rolling_changelog.version %>
+        </div>
+        <h2 class="mb-0"><%= @rolling_changelog.title %></h2>
+        <span class="ms-3 badge bg-primary">Rolling</span>
+      </div>
+      
+      <% if @rolling_changelog.changelog_items.any? %>
+        <div class="changelog-content">
+          <% if @rolling_changelog.changelog_items.features.any? %>
+            <div class="changelog-section mb-4">
+              <h3 class="feature-heading">Automated and improved features</h3>
+              <ul class="changelog-list">
+                <% @rolling_changelog.changelog_items.features.each do |item| %>
+                  <li>
+                    <div class="changelog-item">
+                      <p><%= item.title %></p>
+                      <% if item.description.present? %>
+                        <div class="changelog-description">
+                          <%= simple_format(item.description) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          
+          <% if @rolling_changelog.changelog_items.improvements.any? %>
+            <div class="changelog-section mb-4">
+              <h3 class="improvement-heading">Improvements</h3>
+              <ul class="changelog-list">
+                <% @rolling_changelog.changelog_items.improvements.each do |item| %>
+                  <li>
+                    <div class="changelog-item">
+                      <p><%= item.title %></p>
+                      <% if item.description.present? %>
+                        <div class="changelog-description">
+                          <%= simple_format(item.description) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          
+          <% if @rolling_changelog.changelog_items.bugfixes.any? %>
+            <div class="changelog-section mb-4">
+              <h3 class="bugfix-heading">Bug Fixes</h3>
+              <ul class="changelog-list">
+                <% @rolling_changelog.changelog_items.bugfixes.each do |item| %>
+                  <li>
+                    <div class="changelog-item">
+                      <p><%= item.title %></p>
+                      <% if item.description.present? %>
+                        <div class="changelog-description">
+                          <%= simple_format(item.description) %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No changes have been added to this version yet.</p>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <% if @released_changelogs.any? %>
+    <h2 class="mb-4">Previous Releases</h2>
+    
+    <% @released_changelogs.each do |changelog| %>
+      <div class="changelog-entry mb-5">
+        <div class="d-flex align-items-center mb-3">
+          <div class="version-badge me-3">
+            <%= changelog.version %>
+          </div>
+          <h2 class="mb-0"><%= changelog.title %></h2>
+          <small class="ms-3 text-muted">Released on <%= changelog.released_at.strftime("%B %d, %Y") %></small>
+        </div>
+        
+        <% if changelog.changelog_items.any? %>
+          <div class="changelog-content">
+            <% if changelog.changelog_items.features.any? %>
+              <div class="changelog-section mb-4">
+                <h3 class="feature-heading">Features</h3>
+                <ul class="changelog-list">
+                  <% changelog.changelog_items.features.each do |item| %>
+                    <li>
+                      <div class="changelog-item">
+                        <p><%= item.title %></p>
+                        <% if item.description.present? %>
+                          <div class="changelog-description">
+                            <%= simple_format(item.description) %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <% if changelog.changelog_items.improvements.any? %>
+              <div class="changelog-section mb-4">
+                <h3 class="improvement-heading">Improvements</h3>
+                <ul class="changelog-list">
+                  <% changelog.changelog_items.improvements.each do |item| %>
+                    <li>
+                      <div class="changelog-item">
+                        <p><%= item.title %></p>
+                        <% if item.description.present? %>
+                          <div class="changelog-description">
+                            <%= simple_format(item.description) %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            
+            <% if changelog.changelog_items.bugfixes.any? %>
+              <div class="changelog-section mb-4">
+                <h3 class="bugfix-heading">Bug Fixes</h3>
+                <ul class="changelog-list">
+                  <% changelog.changelog_items.bugfixes.each do |item| %>
+                    <li>
+                      <div class="changelog-item">
+                        <p><%= item.title %></p>
+                        <% if item.description.present? %>
+                          <div class="changelog-description">
+                            <%= simple_format(item.description) %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p>No changes were recorded for this version.</p>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <% if !@rolling_changelog && @released_changelogs.empty? %>
+    <div class="alert alert-info">
+      No changelog entries available yet.
+    </div>
+  <% end %>
+</div>

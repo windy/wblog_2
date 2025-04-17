@@ -1,0 +1,34 @@
+<%= form_with(model: [:admin, changelog, changelog_item], local: true) do |form| %>
+  <% if changelog_item.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(changelog_item.errors.count, "error") %> prohibited this item from being saved:</h4>
+      <ul>
+        <% changelog_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= form.label :item_type %>
+    <%= form.select :item_type, [['Feature', 'feature'], ['Improvement', 'improvement'], ['Bug Fix', 'bugfix']], {}, class: 'form-control' %>
+    <small class="form-text text-muted">Type of changelog item</small>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'e.g. You can now generate rules directly in a conversation' %>
+    <small class="form-text text-muted">A concise title for this item</small>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', rows: 5, placeholder: 'Optional detailed description' %>
+    <small class="form-text text-muted">Optional detailed description with more information</small>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
