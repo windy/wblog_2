@@ -1,0 +1,34 @@
+<%= form_with(model: [:admin, changelog], local: true) do |form| %>
+  <% if changelog.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(changelog.errors.count, "error") %> prohibited this changelog from being saved:</h4>
+      <ul>
+        <% changelog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= form.label :version %>
+    <%= form.text_field :version, class: 'form-control', placeholder: 'e.g. 0.49.x' %>
+    <small class="form-text text-muted">Version number for this changelog</small>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'e.g. Rules generation, improved agent terminal and MCP images' %>
+    <small class="form-text text-muted">A descriptive title for this changelog</small>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label :status %>
+    <%= form.select :status, [['Rolling', 'rolling'], ['Released', 'released']], {}, class: 'form-control' %>
+    <small class="form-text text-muted">Status of this changelog</small>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

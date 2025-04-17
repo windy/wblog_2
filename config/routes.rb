@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   resources :archives, only: [:index]
   resources :photos, only: [:create]
+  
+  resources :changelogs, only: [:index]
+  get '/changelogs/:version', to: 'changelogs#show', as: :changelog
 
   get '/about', to: 'home#about'
 
@@ -40,7 +43,13 @@ Rails.application.routes.draw do
 
     resources :all_comments, only: [:index, :destroy]
     resources :labels
-
+    
+    resources :changelogs do
+      resources :changelog_items, except: [:index, :show]
+      member do
+        patch :release
+      end
+    end
 
     root to: 'dashboard#index'
   end

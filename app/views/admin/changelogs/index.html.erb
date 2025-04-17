@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h2>Changelogs</h2>
+        <div class="card-header-actions">
+          <%= link_to 'New Changelog', new_admin_changelog_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+      <div class="card-body">
+        <% if @changelogs.any? %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Version</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Items</th>
+                <th>Released At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @changelogs.each do |changelog| %>
+                <tr>
+                  <td><%= changelog.version %></td>
+                  <td><%= changelog.title %></td>
+                  <td>
+                    <% if changelog.rolling? %>
+                      <span class="badge bg-primary">Rolling</span>
+                    <% else %>
+                      <span class="badge bg-success">Released</span>
+                    <% end %>
+                  </td>
+                  <td><%= changelog.changelog_items.count %></td>
+                  <td><%= changelog.released_at&.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td>
+                    <%= link_to 'Edit', edit_admin_changelog_path(changelog), class: 'btn btn-sm btn-primary' %>
+                    <% if changelog.rolling? %>
+                      <%= link_to 'Release', release_admin_changelog_path(changelog), method: :patch, class: 'btn btn-sm btn-success', data: { confirm: 'Are you sure you want to release this changelog?' } %>
+                    <% end %>
+                    <%= link_to 'Delete', admin_changelog_path(changelog), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure you want to delete this changelog?' } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <div class="alert alert-info">
+            No changelogs have been created yet.
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
