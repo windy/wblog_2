@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_20_142355) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_17_073439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_20_142355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_administrators_on_name", unique: true
+  end
+
+  create_table "changelogs", force: :cascade do |t|
+    t.string "version", null: false
+    t.string "title", null: false
+    t.text "description", null: false
+    t.datetime "released_at", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["version"], name: "index_changelogs_on_version", unique: true
   end
 
   create_table "comments", force: :cascade do |t|

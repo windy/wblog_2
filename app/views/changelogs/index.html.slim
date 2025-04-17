@@ -1,0 +1,18 @@
+- content_for(:title) do
+  | #{t('title.changelog')}
+.container
+  .row.justify-content-center
+    .col-sm-12.col-lg-9
+      h1.changelog-title 更新日志
+      .changelog-container
+        - @changelogs.each do |changelog|
+          .changelog-item
+            .version-dot
+            .changelog-content
+              .version-info
+                span.version #{changelog.version}
+                - if changelog.title.downcase.include?('rolling')
+                  span.badge.bg-dark.ms-2 Rolling
+              h2.changelog-title= changelog.title
+              .changelog-description
+                == changelog.formatted_description

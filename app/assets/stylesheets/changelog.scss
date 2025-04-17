@@ -1,0 +1,67 @@
+.changelog-container {
+  position: relative;
+  padding: 20px 0;
+}
+
+.changelog-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50px;
+  width: 2px;
+  background-color: #ccc;
+}
+
+.changelog-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 80px;
+}
+
+.version-dot {
+  position: absolute;
+  left: 44px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  z-index: 1;
+}
+
+.changelog-content {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.version-info {
+  margin-bottom: 10px;
+}
+
+.version {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.changelog-title {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.changelog-description {
+  color: #333;
+  line-height: 1.6;
+}
+
+.changelog-description code {
+  background: #333;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
