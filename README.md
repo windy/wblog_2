@@ -40,6 +40,7 @@ Some [screenshots](#screenshots)
 * QR Code, Like button make your article easily sharing with your friends
 * Inpendent comment system, subscribe system, that all belong to you
 * Markdown supported, code highlight, especially for programmer, like you
+* Changelog feature to track and display version history
 * Personalize it, commercialize it, it all depends on you
 
 ### Goal
