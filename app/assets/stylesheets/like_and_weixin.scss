@@ -25,3 +25,31 @@
     outline-style: none;
   }
 }
+
+.social-share {
+  display: block;
+  margin-top: 1rem;
+  
+  .qrcode-wrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .weibo-share {
+    color: #eaa296;
+    background-color: transparent;
+    border: 1px solid #e79385;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    text-decoration: none;
+    
+    &:hover {
+      color: #e07662;
+      border-color: #e27d6b;
+    }
+    
+    i {
+      margin-right: 0.23rem;
+    }
+  }
+}

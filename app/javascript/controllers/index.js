@@ -13,3 +13,6 @@ application.register("qrcode", QrcodeController)
 
 import AdminLabelController from "./admin_label_controller"
 application.register("admin-label", AdminLabelController)
+
+import WeiboShareController from "./weibo_share_controller"
+application.register("weibo-share", WeiboShareController)

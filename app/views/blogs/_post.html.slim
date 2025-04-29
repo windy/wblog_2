@@ -18,6 +18,9 @@ p data-controller='like'
       a#qrcode-link href='#' data-action='click->qrcode#greet'
         i.fi-link
         | #{t('qr_code')}
-    .social-share data-qrcode-target='wrapper'
+    .social-share data-qrcode-target='wrapper' data-controller='weibo-share' data-weibo-share-url-value=blog_url(post) data-weibo-share-title-value=post.title
       .qrcode-wrapper
         = render partial: "qrcode", locals: { str: blog_url(post) }
+      a.weibo-share href='#' data-action='click->weibo-share#share'
+        i.fab.fa-weibo
+        | #{t('weibo_share')}
