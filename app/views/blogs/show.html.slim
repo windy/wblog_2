@@ -9,6 +9,7 @@
   .row.justify-content-center
     .col-xs-12.col-lg-9
       = render partial: "post", :locals=> { post: @post }
+      = render partial: "recommended_posts", :locals=> { recommended_posts: @recommended_posts }
 .comment-field
   = render partial: 'comment', locals: { comments: @comments, post: @post }
   p

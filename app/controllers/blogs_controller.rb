@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
     @next = Post.where('created_at > ?', @post.created_at).order(created_at: :asc).first
     @comments = @post.comments.order(created_at: :desc)
     @likes_count = @post.likes.count
+    @recommended_posts = @post.related_posts(3)
   end
 
   def edit

@@ -107,4 +107,64 @@
     width: 200px;
     margin-bottom: 20px;
   }
+  
+  // 推荐博客区域样式
+  .recommended-posts {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-top: 1px solid #eee;
+    
+    h4 {
+      color: #333;
+      font-weight: 500;
+      
+      i {
+        color: #007bff;
+      }
+    }
+    
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        
+        a {
+          color: #333;
+          text-decoration: none;
+          
+          &:hover {
+            color: #007bff;
+          }
+        }
+      }
+      
+      .card-text {
+        margin-bottom: 0.5rem;
+        
+        i {
+          color: #6c757d;
+        }
+      }
+    }
+    
+    .text-muted {
+      color: #888 !important;
+    }
+    
+    @media screen and (max-width: 767px) {
+      padding: 1rem 0;
+      
+      .col-md-4 {
+        margin-bottom: 1rem !important;
+      }
+    }
+  }
 }

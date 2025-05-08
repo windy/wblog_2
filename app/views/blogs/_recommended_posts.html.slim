@@ -1,0 +1,19 @@
+.recommended-posts.mt-5
+  h4.mb-3
+    i.fa.fa-bookmark.mr-2
+    | 相关推荐
+  - if recommended_posts.present?
+    .row
+      - recommended_posts.each do |post|
+        .col-md-4.mb-3
+          .card
+            .card-body
+              h5.card-title= link_to post.title, blog_path(post)
+              p.card-text.small.text-muted
+                i.fa.fa-tags.mr-1
+                = post.labels_content
+              p.card-text.small.text-muted
+                i.fa.fa-calendar.mr-1
+                = post.created_at.strftime('%Y-%m-%d')
+  - else
+    p.text-muted 暂无相关文章推荐

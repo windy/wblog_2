@@ -50,4 +50,16 @@ class Post < ActiveRecord::Base
   def liked_by?(like_id)
     !! self.likes.where(id: like_id).first
   end
+
+  # Find related posts based on shared labels
+  def related_posts(limit=5)
+    return [] if self.labels.empty?
+    
+    Post.joins(:labels)
+        .where(labels: { id: self.labels  .pluck(:id) })
+        .where.not(id: self.id)
+        .distinct
+        .order(created_at: :desc)
+        .limit(limit)
+  end
 end
