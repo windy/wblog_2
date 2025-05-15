@@ -25,3 +25,59 @@
     outline-style: none;
   }
 }
+
+.qrcode-controller, .weibo-controller {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  vertical-align: top;
+  
+  a {
+    display: inline-block;
+    color: #219AB3;
+    padding: 0.5rem 1rem;
+    border: 1px solid #219AB3;
+    border-radius: 10rem;
+    text-decoration: none;
+    
+    &:hover {
+      color: #FFF;
+      background-color: #219AB3;
+    }
+    
+    &:focus {
+      outline-style: none;
+    }
+    
+    img {
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.social-share {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 40em) {
+  .qrcode-controller, .weibo-controller {
+    display: block;
+    margin-bottom: 0.5rem;
+    
+    a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

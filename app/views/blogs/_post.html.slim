@@ -21,3 +21,8 @@ p data-controller='like'
     .social-share data-qrcode-target='wrapper'
       .qrcode-wrapper
         = render partial: "qrcode", locals: { str: blog_url(post) }
+  .weibo-controller data-controller='weibo' data-weibo-title-value=post.title data-weibo-url-value=blog_url(post)
+    .weibo
+      a#weibo-link href='#' data-action='click->weibo#share'
+        img src=asset_path('iconfont-weibo.svg') alt="Weibo" width="14" height="14"
+        | #{t('weibo_share')}
