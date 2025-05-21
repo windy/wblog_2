@@ -1,0 +1,221 @@
+.changelog-container {
+  padding: 3rem 0;
+  color: #333;
+
+  .changelog-header {
+    margin-bottom: 3rem;
+    text-align: center;
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #666;
+    }
+  }
+
+  .changelog-timeline {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background-color: #e0e0e0;
+
+      @media screen and (min-width: 40.063em) {
+        left: 50%;
+        margin-left: -1px;
+      }
+    }
+  }
+
+  .changelog-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 3rem;
+
+    @media screen and (min-width: 40.063em) {
+      padding-left: 0;
+      &:nth-child(odd) .changelog-version {
+        text-align: right;
+        right: 50%;
+        padding-right: 2rem;
+      }
+      &:nth-child(even) .changelog-version {
+        text-align: left;
+        left: 50%;
+        padding-left: 2rem;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0.6rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: #2199e8;
+      border: 2px solid #fff;
+      z-index: 1;
+
+      @media screen and (min-width: 40.063em) {
+        left: 50%;
+        margin-left: -0.5rem;
+      }
+    }
+
+    .changelog-version {
+      position: relative;
+      margin-bottom: 1.5rem;
+      
+      @media screen and (min-width: 40.063em) {
+        position: absolute;
+        width: 50%;
+        top: 0;
+      }
+
+      .version {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2199e8;
+        
+        @media screen and (max-width: 40em) {
+          display: inline-block;
+          margin-right: 1rem;
+        }
+      }
+
+      .date {
+        display: block;
+        color: #888;
+        font-size: 0.9rem;
+        
+        @media screen and (max-width: 40em) {
+          display: inline-block;
+        }
+      }
+    }
+
+    .changelog-content {
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #2199e8;
+
+      @media screen and (min-width: 40.063em) {
+        width: 50%;
+        margin-left: 50%;
+        
+        .changelog-item:nth-child(odd) & {
+          margin-left: 0;
+        }
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+
+        .fa {
+          color: #2199e8;
+        }
+      }
+
+      .feature-section {
+        margin-bottom: 1.5rem;
+
+        .section-title .fa-star {
+          color: #ffcc00;
+        }
+      }
+
+      .optimization-section {
+        .section-title .fa-wrench {
+          color: #666;
+        }
+      }
+
+      ul {
+        margin-left: 1.5rem;
+        margin-bottom: 0;
+
+        li {
+          margin-bottom: 0.5rem;
+          line-height: 1.6;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .changelog-footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+    font-style: italic;
+  }
+}
+
+// Hover effects
+.changelog-item {
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    
+    &:before {
+      box-shadow: 0 0 0 4px rgba(33, 153, 232, 0.2);
+    }
+    
+    .changelog-content {
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// Dark mode compatibility
+@media (prefers-color-scheme: dark) {
+  .changelog-container {
+    color: #eee;
+    
+    .changelog-header .subtitle {
+      color: #aaa;
+    }
+    
+    .changelog-timeline:before {
+      background-color: #444;
+    }
+    
+    .changelog-item {
+      &:before {
+        background-color: #2199e8;
+        border-color: #333;
+      }
+      
+      .changelog-content {
+        background-color: #222;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        
+        .section-title {
+          color: #ddd;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+- content_for(:title) do
+  | 更新日志
+.container.changelog-container
+  .row.justify-content-center
+    .col-12.col-lg-8.col-xl-6
+      header.changelog-header
+        h1.title 网站更新日志
+        p.subtitle 记录网站功能更新和优化的历史
+      
+      .changelog-timeline
+        - @changes.each do |change|
+          .changelog-item
+            .changelog-version
+              span.version = change[:version]
+              span.date = change[:date]
+            
+            .changelog-content
+              - if change[:new_features].present?
+                .feature-section
+                  h3.section-title
+                    i.fa.fa-star.mr-2
+                    | 新功能
+                  ul.feature-list
+                    - change[:new_features].each do |feature|
+                      li = feature
+              
+              - if change[:optimizations].present?
+                .optimization-section
+                  h3.section-title
+                    i.fa.fa-wrench.mr-2
+                    | 优化
+                  ul.optimization-list
+                    - change[:optimizations].each do |optimization|
+                      li = optimization
+      
+      footer.changelog-footer
+        p.mt-4 我们会持续更新并优化网站功能，如有任何建议，欢迎与我们联系。
