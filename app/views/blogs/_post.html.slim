@@ -21,3 +21,5 @@ p data-controller='like'
     .social-share data-qrcode-target='wrapper'
       .qrcode-wrapper
         = render partial: "qrcode", locals: { str: blog_url(post) }
+      a.weibo-share-button href="#{weibo_share_url(post)}" target="_blank"
+        | Share to Weibo

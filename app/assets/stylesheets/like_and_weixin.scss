@@ -25,3 +25,32 @@
     outline-style: none;
   }
 }
+
+.weibo-share-button {
+  color: #f0a060; // Weibo color - warmer orange
+  background-color: transparent;
+  border: 1px solid #e09050; // Weibo border color
+  border-radius: 10rem; // Same as like-button
+  padding: 0.5rem 1rem; // Same as like-button
+  text-decoration: none; // Ensure it looks like a button
+  display: inline-block; // For padding and margin to work correctly
+  // margin-left: 0.5rem; // Let flex gap handle spacing
+
+  &:hover {
+    color: #d08040; // Weibo hover color
+    border-color: #c07030; // Weibo hover border color
+    background-color: #fef8f0; // A very light background on hover
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline-style: none; // Same as like-button
+  }
+}
+
+.social-share {
+  display: flex;
+  align-items: center; // Vertically align items
+  gap: 0.5rem; // Space between flex items (QR code wrapper and Weibo button)
+  margin-top: 0.5rem; // Add some space above the social share area
+}

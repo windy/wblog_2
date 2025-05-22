@@ -57,4 +57,15 @@ module ApplicationHelper
 
     title.sub(q, "<em>#{q}</em>")
   end
+
+  def weibo_share_url(post)
+    base_url = "http://service.weibo.com/share/share.php"
+    params = {
+      url: blog_url(post),
+      title: post.title,
+      pic: "",
+      appkey: ""
+    }
+    "#{base_url}?#{params.to_query}"
+  end
 end
