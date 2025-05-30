@@ -21,3 +21,7 @@ p data-controller='like'
     .social-share data-qrcode-target='wrapper'
       .qrcode-wrapper
         = render partial: "qrcode", locals: { str: blog_url(post) }
+  .twitter-share
+    a.twitter-share-button href="https://twitter.com/intent/tweet?text=#{CGI.escape(post.title)}&url=#{CGI.escape(blog_url(post))}" target="_blank" title="Share to Twitter"
+      i.fa-brands.fa-twitter
+      | Share to Twitter

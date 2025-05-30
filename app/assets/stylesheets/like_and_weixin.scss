@@ -25,3 +25,29 @@
     outline-style: none;
   }
 }
+
+.twitter-share {
+  display: inline-block;
+  margin-left: 10px;
+
+  .twitter-share-button {
+    color: #1DA1F2;
+    background-color: transparent;
+    border: 1px solid #1DA1F2;
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: white;
+      background-color: #1DA1F2;
+      border-color: #1DA1F2;
+    }
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+}
