@@ -42,6 +42,7 @@ gem 'rouge'
 gem 'mini_magick'
 gem 'html_truncator'
 gem 'nokogiri'
+gem 'rss', require: true
 
 gem 'figaro'
 gem 'simple_form', '~> 5.0'
