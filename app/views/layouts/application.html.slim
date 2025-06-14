@@ -9,6 +9,7 @@ html
     meta name="HandheldFriendly" content="True"
     meta name="MobileOptimized" content="320"
     meta name="turbo-cache-control" content="no-cache"
+    link rel="alternate" type="application/rss+xml" title="#{ENV['SITE_NAME']} RSS" href="/rss"
     - if content_for?(:meta)
       = yield(:meta)
     title
@@ -37,6 +38,9 @@ html
               = link_to '时间线', archives_path, class: 'nav-link'
             li class="nav-item"
               = link_to '关于', about_path, class: 'nav-link'
+            li class="nav-item"
+              = link_to rss_index_path(format: :xml), class: 'nav-link' do
+                .fa.fa-rss
             li class="nav-item"
               a class="nav-link" href=archives_path
                 .fa.fa-search

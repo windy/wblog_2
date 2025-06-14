@@ -304,6 +304,8 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
+    rss (0.3.1)
+      rexml
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
@@ -404,6 +406,7 @@ DEPENDENCIES
   rexml (~> 3.2, >= 3.2.4)
   rouge
   rspec-rails
+  rss
   selenium-webdriver
   sidekiq (~> 5)
   simple_form (~> 5.0)
